@@ -1,9 +1,19 @@
-import './App.css';
+// App.jsx
+import React, { useState, useEffect } from 'react';
 import ServiceCard from './ServiceCard';
-import LeadershipCard from './LeadershipCard';
+import LeadershipSection from './components/LeadershipSection';
 import ProjectCard from './ProjectCard';
+import Navbar from './components/NavBar';
 
 function App() {
+  const [isDark, setIsDark] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
   const services = [
     {
       icon: '/ACMV.png',
@@ -96,87 +106,113 @@ function App() {
     },
   ];
 
+  const [activeTab, setActiveTab] = useState(projectGroups[0]?.title);
+
   return (
-    <div className="App">
-      {/* Navigation */}
-      <nav className="navbar">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Key Projects</a></li>
-          <li><a href="#leadership">Leadership</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+    <div className="bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500">
+      <Navbar isDark={isDark} setIsDark={setIsDark} />
 
-      {/* Banner */}
-      <header id="home" className="banner-header">
-        <img src="/banner.png" alt="Banner" className="banner-image" />
-        <div className="banner-box">
-          <img src="/welogo.png" alt="Logo" className="banner-logo" />
-          <div className="banner-text">
-            <h1>WE Engineering Pte Ltd</h1>
-            <p className="subtitle">Company Profile</p>
-            <div className="underline"></div>
+      <div className="max-w-screen-lg mx-auto px-4">
+        {/* Banner */}
+        <header id="home" className="relative h-[300px] w-full overflow-hidden">
+          <img src="/banner.png" alt="Banner" className="w-full h-full object-cover" />
+          <div className="absolute bottom-8 left-10 flex flex-col items-start gap-2">
+            <img src="/welogo.png" alt="Logo" className="h-14 mb-20 ml-[-18px]" />
+            <div className="bg-white/60 dark:bg-gray-800/60 px-5 py-3 rounded-md shadow-md ml-[-38px] mb-[-10px]">
+              <h1 className="text-lg font-bold text-black dark:text-white">WE Engineering Pte Ltd</h1>
+              <p className="text-blue-600 dark:text-blue-300 font-medium text-sm">Company Profile</p>
+              <div className="h-[3px] w-full bg-blue-600 rounded mt-1" />
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* Services */}
-      <section id="services" className="content-section">
-        <h2>Our Services</h2>
-        <div className="services-grid">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              tagColor={service.tagColor}
-            />
-          ))}
-        </div>
-      </section>
+        {/* Services */}
+        <section id="services" className="my-10 bg-white dark:bg-gray-800 p-6 rounded shadow">
+          <h2 className="text-xl font-bold mb-6">Our Services</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {services.map((service, index) => (
+              <ServiceCard key={index} {...service} />
+            ))}
+          </div>
+        </section>
 
-      {/* Key Projects */}
-      <section id="projects" className="content-section">
-        <h2>Key Projects</h2>
-        <div className="projects-column">
-          {projectGroups.map((group, index) => (
-            <ProjectCard
-              key={index}
-              icon={group.icon}
-              title={group.title}
-              tagColor={group.tagColor}
-              projects={group.projects}
-            />
-          ))}
-        </div>
-      </section>
+        {/* Projects */}
+        <section id="projects" className="section-spacing bg-white dark:bg-gray-800 rounded-xl shadow">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Key Projects</h2>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {projectGroups.map((group, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveTab(group.title)}
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition ${
+                  activeTab === group.title
+                    ? 'bg-primary text-white shadow'
+                    : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300'
+                }`}
+              >
+                {group.title}
+              </button>
+            ))}
+          </div>
 
-      {/* Leadership */}
-      <section id="leadership" className="content-section leadership-section">
-        <h2>Leadership</h2>
-        <LeadershipCard
-          photo="/Eric.png"
-          name="Eric Auiyong"
-          title="Managing Director"
-          bio1="With over three decades of experience in HVAC, M&E, and cleanroom project management, Mr. Eric Auiyong has led high-compliance projects for semiconductor, pharmaceutical, research, and data center facilities."
-          bio2="Formerly Project Director at Takasago Singapore Pte Ltd, he brings technical expertise, hands-on leadership, and a commitment to delivering exceptional value to clients."
-        />
-      </section>
+          <div className="grid gap-6">
+            {projectGroups
+              .filter((group) => group.title === activeTab)
+              .map((group, index) => (
+                <ProjectCard
+                  key={index}
+                  title={group.title}
+                  tagColorStart={group.tagColorStart}
+                  tagColorEnd={group.tagColorEnd}
+                  projects={group.projects}
+                />
+              ))}
+          </div>
+        </section>
 
-      {/* Contact */}
-      <section id="contact" className="content-section contact">
-        <h2>Contact Us</h2>
-        <p>Email: info@we-engineering.com.sg</p>
-        <p>Address: WCEGA TOWER, 21 Bukit Batok Cres, #29-81, Singapore 658065</p>
-      </section>
+        {/* Leadership */}
+        <LeadershipSection />
 
-      {/* Footer */}
-      <footer>
-        &copy; {new Date().getFullYear()} WE Engineering Pte Ltd. All rights reserved.
-      </footer>
+        {/* Footer */}
+        <footer
+          id="contact"
+          className="bg-[#003366] text-white dark:bg-gray-900 mt-16 pt-10 pb-4 px-4 rounded-t-xl shadow-inner"
+        >
+          <div className="max-w-screen-lg mx-auto grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">WE Engineering Pte Ltd</h3>
+              <p className="text-sm">WCEGA Tower, 21 Bukit Batok Cres, #29-81, Singapore 658065</p>
+              <p className="text-sm mt-1">
+                Email:{' '}
+                <a
+                  href="mailto:info@we-engineering.com.sg"
+                  className="underline text-blue-200 hover:text-white"
+                >
+                  info@we-engineering.com.sg
+                </a>
+              </p>
+              <p className="text-sm mt-1">Phone: +65 8366 8738</p>
+            </div>
+
+            <div>
+              <iframe
+                title="WE Engineering Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.4934951136814!2d103.75720113814559!3d1.3371481252415036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da106e2359f501%3A0xe711c6cdf0d7a4ad!2sSingapore%20658065!5e0!3m2!1sen!2ssg!4v1716355048575!5m2!1sen!2ssg"
+                width="100%"
+                height="200"
+                className="rounded-lg border-0"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          <div className="text-center text-xs text-gray-300 mt-6 border-t border-gray-500 pt-3">
+            &copy; {new Date().getFullYear()} WE Engineering Pte Ltd. All rights reserved.
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }
