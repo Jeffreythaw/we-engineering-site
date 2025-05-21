@@ -113,7 +113,7 @@ function App() {
       <header id="home" className="banner-header">
         <img src="/banner.png" alt="Banner" className="banner-image" />
         <div className="banner-box">
-          <img src="/we_logo.png" alt="Logo" className="banner-logo" />
+          <img src="/We_Logo.png" alt="Logo" className="banner-logo" />
           <div className="banner-text">
             <h1>WE Engineering Pte Ltd</h1>
             <p className="subtitle">Company Profile</p>
