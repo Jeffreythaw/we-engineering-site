@@ -1,0 +1,55 @@
+.code {
+  font-size: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+  background: transparent;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+}
+
+.digit {
+  display: flex;
+  padding: 1rem 0.15rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: riseFadeOnce 0.6s ease-out forwards;
+  background: linear-gradient(to right, #4fd1c5, #63b3ed, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Add this class to replay the animation */
+.digit.replay {
+  animation: riseFadeOnce 0.6s ease-out forwards;
+}
+
+.digit:nth-child(1) { animation-delay: 0.05s; }
+.digit:nth-child(2) { animation-delay: 0.1s; }
+.digit:nth-child(3) { animation-delay: 0.15s; }
+.digit:nth-child(4) { animation-delay: 0.2s; }
+.digit:nth-child(5) { animation-delay: 0.25s; }
+.digit:nth-child(6) { animation-delay: 0.3s; }
+.digit:nth-child(7) { animation-delay: 0.35s; }
+.digit:nth-child(8) { animation-delay: 0.4s; }
+.digit:nth-child(9) { animation-delay: 0.45s; }
+.digit:nth-child(10) { animation-delay: 0.5s; }
+.digit:nth-child(11) { animation-delay: 0.55s; }
+.digit:nth-child(12) { animation-delay: 0.6s; }
+.digit:nth-child(13) { animation-delay: 0.65s; }
+.digit:nth-child(14) { animation-delay: 0.7s; }
+.digit:nth-child(15) { animation-delay: 0.75s; }
+.digit:nth-child(16) { animation-delay: 0.8s; }
+.digit:nth-child(17) { animation-delay: 0.85s; }
+.digit:nth-child(18) { animation-delay: 0.9s; }
+.digit:nth-child(19) { animation-delay: 0.95s; }
+
+@keyframes riseFadeOnce {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
