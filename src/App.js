@@ -1,9 +1,9 @@
-// App.jsx
 import React, { useState, useEffect } from 'react';
 import ServiceCard from './ServiceCard';
 import LeadershipSection from './components/LeadershipSection';
 import ProjectCard from './ProjectCard';
 import Navbar from './components/NavBar';
+import HeatLoadList from './components/HeatLoadList';
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -14,6 +14,9 @@ function App() {
     document.documentElement.classList.toggle('dark', isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
+
+  const [showHeatLoad, setShowHeatLoad] = useState(false);
+
   const services = [
     {
       icon: '/ACMV.png',
@@ -136,8 +139,20 @@ function App() {
           </div>
         </section>
 
+        {/* Toggle for Heat Load List */}
+        <div className="my-6">
+          <button
+            onClick={() => setShowHeatLoad(!showHeatLoad)}
+            className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700"
+          >
+            {showHeatLoad ? "Hide Heat Load Records" : "View Heat Load Records"}
+          </button>
+        </div>
+
+        {showHeatLoad && <HeatLoadList />}
+
         {/* Projects */}
-        <section id="projects" className="section-spacing bg-white dark:bg-gray-800 rounded-xl shadow">
+        <section id="projects" className="section-spacing bg-white dark:bg-gray-800 rounded-xl shadow mt-12">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Key Projects</h2>
           <div className="flex flex-wrap gap-2 mb-6">
             {projectGroups.map((group, idx) => (
@@ -170,7 +185,6 @@ function App() {
           </div>
         </section>
 
-        {/* Leadership */}
         <LeadershipSection />
 
         {/* Footer */}
