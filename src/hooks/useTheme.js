@@ -1,14 +1,13 @@
-// src/hooks/useTheme.js
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from "react";
 
 const useTheme = () => {
   const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem('theme') === 'dark';
+    return localStorage.getItem("theme") === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", isDark);
   }, [isDark]);
 
   return [isDark, setIsDark];
