@@ -56,135 +56,144 @@ const HeatLoadCalculator = ({ onCalculate }) => {
     <div className="p-6 max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg">
       <h1 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-6">Heat Load Calculator</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Project Name</label>
-          <input
-            {...register("projectName", { required: "Project name is required" })}
-            className="mt-1 p-2 border rounded w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-green-500"
-          />
-          {errors.projectName && <p className="text-red-500 text-sm mt-1">{errors.projectName.message}</p>}
+        {/* Project Name and Building Type in Two Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Project Name</label>
+            <input
+              {...register("projectName", { required: "Project name is required" })}
+              className="mt-1 p-2 border rounded w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-green-500"
+            />
+            {errors.projectName && <p className="text-red-500 text-sm mt-1">{errors.projectName.message}</p>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Building Type</label>
+            <select
+              {...register("buildingType")}
+              className="mt-1 p-2 border rounded w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-green-500"
+            >
+              <option value="HDB">HDB</option>
+              <option value="Condo">Condo</option>
+              <option value="Landed">Landed</option>
+            </select>
+          </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Building Type</label>
-          <select
-            {...register("buildingType")}
-            className="mt-1 p-2 border rounded w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-green-500"
-          >
-            <option value="HDB">HDB</option>
-            <option value="Condo">Condo</option>
-            <option value="Landed">Landed</option>
-          </select>
-        </div>
+        {/* Zones in Two Columns */}
+        <div className="space-y-6">
+          {fields.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {fields.map((field, index) => {
+                const lengthM = watch(`zones.${index}.lengthM`) || 0;
+                const widthM = watch(`zones.${index}.widthM`) || 0;
+                const area = lengthM * widthM;
 
-        {fields.map((field, index) => {
-          const lengthM = watch(`zones.${index}.lengthM`) || 0;
-          const widthM = watch(`zones.${index}.widthM`) || 0;
-          const area = lengthM * widthM;
+                return (
+                  <div key={field.id} className="border p-4 rounded-md dark:border-gray-600 dark:bg-gray-700 relative">
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Zone Name</label>
+                        <input
+                          {...register(`zones.${index}.name`, { required: "Zone name is required" })}
+                          className="mt-1 p-2 border rounded w-full dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                        />
+                        {errors.zones?.[index]?.name && <p className="text-red-500 text-sm mt-1">{errors.zones[index].name.message}</p>}
+                      </div>
 
-          return (
-            <div key={field.id} className="border p-4 rounded-md dark:border-gray-600 dark:bg-gray-700 relative">
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Zone Name</label>
-                  <input
-                    {...register(`zones.${index}.name`, { required: "Zone name is required" })}
-                    className="mt-1 p-2 border rounded w-full dark:bg-gray-600 dark:border-gray-500 dark:text-white"
-                  />
-                  {errors.zones?.[index]?.name && <p className="text-red-500 text-sm mt-1">{errors.zones[index].name.message}</p>}
-                </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Length (m)</label>
+                        <input
+                          type="number"
+                          step="0.1"
+                          {...register(`zones.${index}.lengthM`, {
+                            required: "Length is required",
+                            min: { value: 0.1, message: "Length must be at least 0.1m" }
+                          })}
+                          className="mt-1 p-2 border rounded w-full dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                        />
+                        {errors.zones?.[index]?.lengthM && <p className="text-red-500 text-sm mt-1">{errors.zones[index].lengthM.message}</p>}
+                        {lengthM > 50 && <p className="text-yellow-500 text-sm mt-1">⚠ Length seems unusually high</p>}
+                      </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Length (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    {...register(`zones.${index}.lengthM`, {
-                      required: "Length is required",
-                      min: { value: 0.1, message: "Length must be at least 0.1m" }
-                    })}
-                    className="mt-1 p-2 border rounded w-full dark:bg-gray-600 dark:border-gray-500 dark:text-white"
-                  />
-                  {errors.zones?.[index]?.lengthM && <p className="text-red-500 text-sm mt-1">{errors.zones[index].lengthM.message}</p>}
-                  {lengthM > 50 && <p className="text-yellow-500 text-sm mt-1">⚠ Length seems unusually high</p>}
-                </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Width (m)</label>
+                        <input
+                          type="number"
+                          step="0.1"
+                          {...register(`zones.${index}.widthM`, {
+                            required: "Width is required",
+                            min: { value: 0.1, message: "Width must be at least 0.1m" }
+                          })}
+                          className="mt-1 p-2 border rounded w-full dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                        />
+                        {errors.zones?.[index]?.widthM && <p className="text-red-500 text-sm mt-1">{errors.zones[index].widthM.message}</p>}
+                        {widthM > 50 && <p className="text-yellow-500 text-sm mt-1">⚠ Width seems unusually high</p>}
+                      </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Width (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    {...register(`zones.${index}.widthM`, {
-                      required: "Width is required",
-                      min: { value: 0.1, message: "Width must be at least 0.1m" }
-                    })}
-                    className="mt-1 p-2 border rounded w-full dark:bg-gray-600 dark:border-gray-500 dark:text-white"
-                  />
-                  {errors.zones?.[index]?.widthM && <p className="text-red-500 text-sm mt-1">{errors.zones[index].widthM.message}</p>}
-                  {widthM > 50 && <p className="text-yellow-500 text-sm mt-1">⚠ Width seems unusually high</p>}
-                </div>
+                      <div className="relative">
+                        <div className="group">
+                          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 cursor-help">
+                            Occupants
+                          </label>
+                          <div className="absolute hidden group-hover:block w-64 p-2 bg-gray-800 dark:bg-gray-600 text-white dark:text-gray-200 text-xs rounded shadow-lg -top-10 left-0 z-10">
+                            Number of people typically in this room at the same time. Each person adds heat (e.g., 0.05 kW per person). Default is 1 if not specified.
+                          </div>
+                        </div>
+                        <input
+                          type="number"
+                          title="Number of people typically in this room at the same time. Each person adds heat (e.g., 0.05 kW per person). Default is 1 if not specified."
+                          {...register(`zones.${index}.occupants`, { min: 0 })}
+                          className="mt-1 p-2 border rounded w-full dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                        />
+                      </div>
 
-                <div className="relative">
-                  <div className="group">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 cursor-help">
-                      Occupants
-                    </label>
-                    <div className="absolute hidden group-hover:block w-64 p-2 bg-gray-800 dark:bg-gray-600 text-white dark:text-gray-200 text-xs rounded shadow-lg -top-10 left-0 z-10">
-                      Number of people typically in this room at the same time. Each person adds heat (e.g., 0.05 kW per person). Default is 1 if not specified.
+                      <p className="text-sm text-gray-600 dark:text-gray-300">
+                        🧮 Auto-Calculated Area: <strong>{area.toFixed(1)} m²</strong>
+                      </p>
+
+                      <div
+                        className="border bg-gray-100 dark:bg-gray-600 rounded flex items-center justify-center text-xs"
+                        style={{ width: `${Math.min(widthM * 8, 200)}px`, height: `${Math.min(lengthM * 8, 200)}px` }}
+                      >
+                        📏 Room Size Preview
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => remove(index)}
+                        className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm"
+                      >
+                        Remove Zone
+                      </button>
                     </div>
                   </div>
-                  <input
-                    type="number"
-                    title="Number of people typically in this room at the same time. Each person adds heat (e.g., 0.05 kW per person). Default is 1 if not specified."
-                    {...register(`zones.${index}.occupants`, { min: 0 })}
-                    className="mt-1 p-2 border rounded w-full dark:bg-gray-600 dark:border-gray-500 dark:text-white"
-                  />
-                </div>
-
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  🧮 Auto-Calculated Area: <strong>{area.toFixed(1)} m²</strong>
-                </p>
-
-                <div
-                  className="border bg-gray-100 dark:bg-gray-600 rounded flex items-center justify-center text-xs"
-                  style={{ width: `${Math.min(widthM * 8, 200)}px`, height: `${Math.min(lengthM * 8, 200)}px` }}
-                >
-                  📏 Room Size Preview
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => remove(index)}
-                  className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm"
-                >
-                  Remove Zone
-                </button>
-              </div>
+                );
+              })}
             </div>
-          );
-        })}
+          )}
 
-        <div className="flex space-x-4">
-          <button
-            type="button"
-            onClick={() => append({ name: `Room ${fields.length + 1}`, lengthM: 0, widthM: 0, occupants: 1 })}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
-          >
-            + Add Zone
-          </button>
-          <button
-            type="submit"
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600"
-          >
-            Calculate & Save
-          </button>
-          <button
-            type="button"
-            onClick={handleReset}
-            className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700"
-          >
-            Reset Form
-          </button>
+          <div className="flex space-x-4">
+            <button
+              type="button"
+              onClick={() => append({ name: `Room ${fields.length + 1}`, lengthM: 0, widthM: 0, occupants: 1 })}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+            >
+              + Add Zone
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600"
+            >
+              Calculate & Save
+            </button>
+            <button
+              type="button"
+              onClick={handleReset}
+              className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700"
+            >
+              Reset Form
+            </button>
+          </div>
         </div>
       </form>
 
