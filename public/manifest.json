@@ -1,7 +1,8 @@
 {
+  "id": "/we-engineering",
   "short_name": "WE Eng",
   "name": "WE Engineering Pte Ltd",
-  "description": "Official site for WE Engineering Pte Ltd — ACMV, HVAC, M&E, and Cleanroom Specialists.",
+  "description": "WE Engineering Pte Ltd — Specialists in ACMV, HVAC, M&E, and Cleanrooms",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -14,9 +15,10 @@
       "type": "image/png"
     },
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/icons/icon-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "start_url": "/",

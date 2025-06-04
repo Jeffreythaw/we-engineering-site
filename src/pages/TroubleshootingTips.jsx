@@ -37,7 +37,7 @@ const TroubleshootingTips = () => (
       {/* Strange Noises */}
       <IssueSection
         title="Strange Noises"
-        image="/public/issue-strange-noises.png"
+        image="/strangenoises.png"
         description="Unusual sounds like rattling, buzzing, or grinding indicate mechanical or operational issues that can worsen if ignored."
         causes="Possible Causes: Loose screws or panels, worn fan belts, debris in the unit, or failing motor bearings."
         troubleshooting="Troubleshooting Steps: Turn off the unit and inspect for loose components or debris. Tighten screws or panels. Lubricate motor bearings if accessible. For persistent noises, contact a technician to inspect belts, motors, or compressor."
@@ -46,7 +46,7 @@ const TroubleshootingTips = () => (
       {/* Foul Odors */}
       <IssueSection
         title="Foul Odors"
-        image="/public/issue-foul-odors.png"
+        image="/foulodors.png"
         description="Unpleasant smells from the air conditioner can affect indoor air quality and indicate underlying issues."
         causes="Possible Causes: Mold or mildew in the drain pan or coils, clogged filters, or stagnant water in the system."
         troubleshooting="Troubleshooting Steps: Clean or replace air filters. Use coil cleaner on evaporator coils and clear the drain pan. Run the fan-only mode to dry the system. If odors persist, schedule professional cleaning or check for duct contamination."
@@ -55,7 +55,7 @@ const TroubleshootingTips = () => (
       {/* Uneven Cooling */}
       <IssueSection
         title="Uneven Cooling"
-        image="/public/issue-uneven-cooling.png"
+        image="/unevencooling.png"
         description="Some areas of the space are cooler than others, leading to inconsistent comfort levels."
         causes="Possible Causes: Blocked vents, poor insulation, improper system sizing, or duct leaks."
         troubleshooting="Troubleshooting Steps: Ensure vents are open and unobstructed. Check insulation in walls or windows. Verify system capacity matches room size using a heat load calculation. Inspect ductwork for leaks and seal with mastic or foil tape."
@@ -64,7 +64,7 @@ const TroubleshootingTips = () => (
       {/* High Energy Bills */}
       <IssueSection
         title="High Energy Bills"
-        image="/public/issue-high-energy.png"
+        image="/highenergy.png"
         description="Unexpectedly high electricity costs can result from inefficient operation or system malfunctions."
         causes="Possible Causes: Dirty filters or coils, low refrigerant, outdated system, or excessive runtime due to improper settings."
         troubleshooting="Troubleshooting Steps: Clean filters and coils regularly. Adjust thermostat to efficient settings (e.g., 24-26°C for tropical climates). Check for refrigerant leaks via professional service. Consider upgrading to an energy-efficient system if the unit is old."

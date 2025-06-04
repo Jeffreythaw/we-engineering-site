@@ -10,7 +10,7 @@ const MaintenanceTips = () => (
       {/* Filter Cleaning */}
       <MaintenanceSection 
         title="Clean filters every month"
-        image="Filter Cleaning Example"
+        image="/FilterClean.png"
         description="Dirty filters reduce airflow efficiency by up to 15% and force your system to work harder, leading to higher energy consumption and increased wear."
         warning="Signs of Dirty Filters: Increased dust accumulation, reduced cooling/heating efficiency, and odd odors."
         bestPractice="Vacuum reusable filters every two weeks or replace pleated filters every 30-90 days."
@@ -19,25 +19,16 @@ const MaintenanceTips = () => (
       {/* Fan & Coil Service */}
       <MaintenanceSection 
         title="Inspect and service fans and coils every 6 months"
-        image="Coil Cleaning Example"
+        image="/coilcleaning.png"
         description="Dust accumulation on coils reduces heat transfer efficiency by 20-30%, leading to increased energy consumption. Check fan blades for cracks, debris, and ensure motors are properly lubricated."
         warning="Warning Signs: Decreased cooling capacity, excessive noise, and high electricity usage."
         bestPractice="Use soft brush and coil cleaner on evaporator coils during seasonal checks."
       />
 
-      {/* Thermostat Calibration */}
-      <MaintenanceSection 
-        title="Calibrate thermostat yearly"
-        image="Thermostat Calibration Example"
-        description="Misconfigured thermostats lead to inefficient heating and cooling cycles, increasing energy usage."
-        warning="Signs of Faulty Calibration: Inconsistent room temperature, unresponsive settings."
-        bestPractice="Check and recalibrate the thermostat annually for optimal performance."
-      />
-
       {/* Ductwork Inspection & Sealing */}
       <MaintenanceSection 
         title="Inspect and seal ductwork"
-        image="Ductwork Inspection Example"
+        image="/ductworkinspection.png"
         description="Leaks in ducts reduce airflow efficiency and increase utility costs. Inspect ducts for blockages or damage."
         warning="Warning Signs: Uneven heating/cooling, increased energy bills."
         bestPractice="Seal gaps with mastic or foil tape, and check for obstructions every six months."
@@ -46,7 +37,7 @@ const MaintenanceTips = () => (
       {/* Electrical Component Testing */}
       <MaintenanceSection 
         title="Test electrical components yearly"
-        image="Electrical Testing Example"
+        image="/electricaltesting.png"
         description="Inspect capacitors, contactors, and circuit boards for signs of wear or damage to prevent failures."
         warning="Warning Signs: Frequent system shutdowns, burning smells."
         bestPractice="Perform electrical system diagnostics annually using voltage meters."
@@ -55,48 +46,11 @@ const MaintenanceTips = () => (
       {/* System Performance Diagnostics */}
       <MaintenanceSection 
         title="Run system performance diagnostics"
-        image="System Diagnostics Example"
+        image="/systemdiagnostics.png"
         description="Check system pressure levels, airflow rates, and efficiency metrics to detect potential issues early."
         warning="Warning Signs: Weak airflow, fluctuating temperatures."
         bestPractice="Use diagnostic tools to evaluate system efficiency before seasonal changes."
       />
-
-      {/* Lubrication of Moving Parts */}
-      <MaintenanceSection 
-        title="Lubricate moving parts"
-        image="Lubrication Example"
-        description="Reduce wear and tear by lubricating fan motors, belts, and bearings regularly."
-        warning="Warning Signs: Grinding or squeaking noises, excess friction."
-        bestPractice="Apply manufacturer-recommended lubricants to motor bearings and moving components annually."
-      />
-
-      {/* Surge Protection */}
-      <MaintenanceSection 
-        title="Install surge protection"
-        image="Surge Protection Example"
-        description="Protect the HVAC system from electrical surges that can damage sensitive components."
-        warning="Warning Signs: Flickering displays, component overheating."
-        bestPractice="Install surge protectors and monitor voltage stability."
-      />
-
-      {/* Carbon Monoxide & Air Quality Testing */}
-      <MaintenanceSection 
-        title="Test for carbon monoxide and air quality"
-        image="Air Quality Testing Example"
-        description="Check for air pollutants and potential gas leaks to enhance safety."
-        warning="Warning Signs: Headaches, dizziness, increased allergy symptoms."
-        bestPractice="Perform indoor air quality tests annually with CO detectors."
-      />
-
-      {/* Seasonal Preparation */}
-      <MaintenanceSection 
-        title="Prepare for seasonal demands"
-        image="Seasonal Prep Example"
-        description="Ensure HVAC units are ready for summer and winter with tailored maintenance."
-        warning="Warning Signs: System struggles to maintain temperature during extreme weather."
-        bestPractice="Inspect heating elements before winter and cooling units before summer."
-      />
-
     </div>
   </div>
 );
@@ -104,8 +58,16 @@ const MaintenanceTips = () => (
 // Reusable Maintenance Section Component
 const MaintenanceSection = ({ title, image, description, warning, bestPractice }) => (
   <div className="flex flex-col md:flex-row gap-6">
-    <div className="md:w-1/3 bg-gray-200 border-2 border-dashed rounded-xl w-full h-56 flex items-center justify-center text-gray-500">
-      {image}
+    <div className="md:w-1/3 bg-gray-200 border-2 border-dashed rounded-xl w-full h-56 flex items-center justify-center">
+      <img 
+        src={image} 
+        alt={title} 
+        className="max-w-full max-h-full object-contain rounded-xl"
+        onError={(e) => {
+          e.target.src = '/fallback.png'; // Fallback image
+          e.target.alt = 'Image not available';
+        }}
+      />
     </div>
     <div className="md:w-2/3">
       <h4 className="font-semibold text-lg mb-2">{title}</h4>
