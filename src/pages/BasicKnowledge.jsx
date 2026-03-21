@@ -1,65 +1,123 @@
-import React from 'react';
+import React from "react";
+import SEO from "../components/SEO";
+
+const basics = [
+  {
+    title: "Split Unit Air Conditioner",
+    image: "/splitunit.png",
+    summary:
+      "A simple indoor-outdoor setup for single rooms and small offices.",
+    points: [
+      "Quiet operation and straightforward control",
+      "Good for independent room-by-room cooling",
+      "Common in homes and small commercial spaces",
+    ],
+  },
+  {
+    title: "VRV / VRF System",
+    image: "/vrvsystem.png",
+    summary:
+      "A flexible refrigerant system that serves multiple indoor units from one outdoor network.",
+    points: [
+      "Useful when different zones need different set points",
+      "Efficient for larger homes and commercial floors",
+      "Supports compact mechanical layouts",
+    ],
+  },
+  {
+    title: "Chilled Water System",
+    image: "/chilledwater.png",
+    summary:
+      "A central plant solution that distributes chilled water to AHUs and FCUs.",
+    points: [
+      "Best suited for large buildings and campuses",
+      "Scales well for hospital, hotel, and industrial use",
+      "Works well with building management systems",
+    ],
+  },
+  {
+    title: "Heat Load Basics",
+    image: "/heatload.png",
+    summary:
+      "Heat load is the cooling demand a room or building must overcome to stay comfortable.",
+    points: [
+      "Depends on area, ceiling height, windows, occupants, and equipment",
+      "Correct sizing avoids under-cooling and wasted energy",
+      "The starting point for any reliable aircon design",
+    ],
+  },
+];
 
 const BasicKnowledge = () => (
-  <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-    <h3 className="text-xl font-bold text-orange-600 dark:text-orange-300 mb-4 border-b pb-2">
-      Air Conditioning Systems: Key Types and Features
-    </h3>
-    
-    <div className="space-y-8">
-      {/* Split Unit */}
-      <SystemSection 
-        title="Split Unit Air Conditioner"
-        image ="/splitunit.png"
-        description="Split unit air conditioners consist of an indoor unit (evaporator) and an outdoor unit (condenser) connected by refrigerant lines. They use a refrigeration cycle to remove heat from indoor spaces, delivering cool air via a fan."
-        keyFeatures="Key Features: Quiet operation, energy-efficient inverter technology, suitable for single rooms or small spaces. Typically wall-mounted with remote control."
-        bestUse="Best Use: Homes, small offices, or individual rooms requiring independent cooling."
-      />
+  <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <SEO
+      title="Air conditioning basics"
+      description="Learn the main air conditioning system types, how they fit different sites, and why heat load matters."
+      path="/services/basic-knowledge"
+      image="https://we-engineering.net/banner.png"
+    />
+    <section className="rounded-[2rem] border border-slate-200/80 bg-white/85 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur dark:border-white/10 dark:bg-slate-900/60 sm:p-8">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+          HVAC fundamentals
+        </p>
+        <h1 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">
+          Air conditioning basics
+        </h1>
+        <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+          A practical overview of common system types and the sizing ideas behind them.
+        </p>
+      </div>
 
-      {/* VRV/VRF System */}
-      <SystemSection 
-        title="VRV/VRF System"
-        image ="/vrvsystem.png"
-        description="Variable Refrigerant Volume (VRV) or Variable Refrigerant Flow (VRF) systems use advanced technology to control the flow of refrigerant to multiple indoor units from a single outdoor unit. They provide precise temperature control and zoning capabilities."
-        keyFeatures="Key Features: High energy efficiency, supports multiple indoor units, flexible zoning for different areas, and quiet operation."
-        bestUse="Best Use: Commercial buildings, large homes, or spaces requiring independent temperature control in multiple zones."
-      />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {[
+          "Know the main system types",
+          "Understand where each one fits",
+          "Use heat load to size properly",
+          "Avoid common design mistakes",
+        ].map((item) => (
+          <div
+            key={item}
+            className="rounded-3xl border border-slate-200 bg-slate-50/80 p-4 text-sm font-medium text-slate-700 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
+          >
+            {item}
+          </div>
+        ))}
+      </div>
 
-      {/* Chilled Water System (AHU/FCU) */}
-      <SystemSection 
-        title="Chilled Water System (AHU/FCU)"
-        image="/chilledwater.png"
-        description="Chilled water systems use a central chiller to cool water, which is then circulated through Air Handling Units (AHUs) or Fan Coil Units (FCUs) to cool indoor spaces. These systems are highly efficient for large-scale cooling."
-        keyFeatures="Key Features: Scalable for large buildings, supports multiple zones, integrates with building management systems, and provides consistent cooling."
-        bestUse="Best Use: Large commercial buildings, hospitals, hotels, or industrial facilities with extensive cooling needs."
-      />
-
-      {/* Heat Load Basics */}
-      <SystemSection 
-        title="Heat Load Basics"
-        image="/heatload.png"
-        description="Heat load refers to the amount of heat energy that an air conditioning system must remove to maintain a comfortable indoor temperature. It is measured in kilowatts (kW) or BTU/hr and is critical for sizing AC systems correctly."
-        keyFeatures="Key Factors: Room size (area and volume), insulation quality, number of occupants, windows (size and orientation), external temperature, and equipment heat output (e.g., computers, lighting)."
-        bestUse="Best Use: Calculating heat load ensures proper AC system sizing for residential, commercial, or industrial spaces, optimizing energy efficiency and comfort."
-      />
-    </div>
+      <div className="mt-8 grid gap-6">
+        {basics.map((item, index) => (
+          <BasicCard key={item.title} {...item} index={index} />
+        ))}
+      </div>
+    </section>
   </div>
 );
 
-// Reusable System Section Component
-const SystemSection = ({ title, image, description, keyFeatures, bestUse }) => (
-  <div className="flex flex-col md:flex-row gap-6">
-    <div className="md:w-1/3 bg-gray-200 border-2 border-dashed rounded-xl w-full h-56 flex items-center justify-center text-gray-500">
-      <img src={image} alt={title} className="max-w-full max-h-full object-contain" />
+const BasicCard = ({ title, image, summary, points, index }) => (
+  <div className="grid gap-5 rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-white/5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div className={`overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-950/40 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+      <img src={image} alt={title} className="block aspect-[4/3] w-full object-contain" />
     </div>
-    <div className="md:w-2/3">
-      <h4 className="font-semibold text-lg mb-2">{title}</h4>
-      <p className="mb-2">{description}</p>
-      <p className="mb-2"><strong>{keyFeatures}</strong></p>
-      <div className="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-md">
-        <span className="font-medium text-blue-700 dark:text-blue-300">Best Use:</span> 
-        <span className="ml-2">{bestUse}</span>
-      </div>
+
+    <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-600 dark:text-sky-400">
+        System overview
+      </p>
+      <h2 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">
+        {title}
+      </h2>
+      <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+        {summary}
+      </p>
+      <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-700 dark:text-slate-200">
+        {points.map((point) => (
+          <li key={point} className="flex gap-2">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-500" />
+            <span>{point}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 );

@@ -1,0 +1,87 @@
+<svg width="1500" height="900" viewBox="0 0 1500 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mission, Vision, Values</title>
+  <desc id="desc">Three overlapping circles showing the company's mission, vision, and values.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FAFCFE"/>
+      <stop offset="1" stop-color="#F4F7FB"/>
+    </linearGradient>
+    <linearGradient id="visionFill" x1="115" y1="230" x2="500" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#59C55D"/>
+      <stop offset="1" stop-color="#44AF4A"/>
+    </linearGradient>
+    <linearGradient id="valuesFill" x1="585" y1="210" x2="965" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35A9E8"/>
+      <stop offset="1" stop-color="#2790D0"/>
+    </linearGradient>
+    <linearGradient id="missionFill" x1="335" y1="510" x2="880" y2="845" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDB13A"/>
+      <stop offset="1" stop-color="#F59E1B"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#0F172A" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-weight: 700; fill: #FFFFFF; }
+      .body { font-family: Arial, Helvetica, sans-serif; font-weight: 400; fill: rgba(255,255,255,0.95); }
+      .chip { font-family: Arial, Helvetica, sans-serif; font-weight: 700; letter-spacing: 0.03em; }
+    </style>
+  </defs>
+
+  <rect width="1500" height="900" fill="url(#bg)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="54" y="54" width="1392" height="792" rx="40" fill="#FFFFFF"/>
+  </g>
+
+  <g opacity="0.45">
+    <circle cx="170" cy="130" r="180" fill="#8AD0FF" fill-opacity="0.12"/>
+    <circle cx="1310" cy="150" r="180" fill="#7DDBA3" fill-opacity="0.10"/>
+    <circle cx="780" cy="780" r="210" fill="#F6B24B" fill-opacity="0.12"/>
+  </g>
+
+  <!-- Vision -->
+  <g>
+    <circle cx="300" cy="305" r="195" fill="url(#visionFill)"/>
+    <circle cx="300" cy="305" r="195" stroke="#FFFFFF" stroke-width="6" opacity="0.95"/>
+    <rect x="156" y="210" width="114" height="38" rx="19" fill="#ECF9ED"/>
+    <text x="174" y="235" class="chip" font-size="15" fill="#2A8F4C">VISION</text>
+    <text x="156" y="286" class="title" font-size="38">Vision</text>
+    <text x="156" y="326" class="body" font-size="18">
+      <tspan x="156" dy="0">Clients trust us for quality,</tspan>
+      <tspan x="156" dy="25">coordination, and calm execution.</tspan>
+    </text>
+  </g>
+
+  <!-- Values -->
+  <g>
+    <circle cx="775" cy="285" r="205" fill="url(#valuesFill)"/>
+    <circle cx="775" cy="285" r="205" stroke="#FFFFFF" stroke-width="6" opacity="0.95"/>
+    <rect x="632" y="194" width="116" height="38" rx="19" fill="#EAF6FD"/>
+    <text x="650" y="219" class="chip" font-size="15" fill="#1681BD">VALUES</text>
+    <text x="632" y="275" class="title" font-size="38">Values</text>
+    <text x="632" y="315" class="body" font-size="18">
+      <tspan x="632" dy="0">Precision, accountability,</tspan>
+      <tspan x="632" dy="25">and steady communication.</tspan>
+    </text>
+  </g>
+
+  <!-- Mission -->
+  <g>
+    <circle cx="540" cy="640" r="235" fill="url(#missionFill)"/>
+    <circle cx="540" cy="640" r="235" stroke="#FFFFFF" stroke-width="6" opacity="0.98"/>
+    <rect x="365" y="552" width="124" height="38" rx="19" fill="#FFF2D7"/>
+    <text x="383" y="577" class="chip" font-size="15" fill="#D48400">MISSION</text>
+    <text x="365" y="628" class="title" font-size="38">Mission</text>
+    <text x="365" y="668" class="body" font-size="18">
+      <tspan x="365" dy="0">Practical engineering support</tspan>
+      <tspan x="365" dy="25">for real site conditions.</tspan>
+    </text>
+  </g>
+
+  <!-- small link dots -->
+  <circle cx="505" cy="248" r="7" fill="#FFFFFF"/>
+  <circle cx="630" cy="236" r="7" fill="#FFFFFF"/>
+  <circle cx="530" cy="520" r="7" fill="#FFFFFF"/>
+  <circle cx="700" cy="505" r="7" fill="#FFFFFF"/>
+</svg>

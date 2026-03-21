@@ -1,81 +1,103 @@
-import React from 'react';
+import React from "react";
+import SEO from "../components/SEO";
+
+const maintenanceItems = [
+  {
+    title: "Clean filters monthly",
+    image: "/FilterClean.png",
+    summary: "Blocked filters reduce airflow and make the system work harder.",
+    warning: "Dust buildup, weak airflow, or musty smells",
+    practice: "Vacuum reusable filters every two weeks or replace them every 30 to 90 days.",
+  },
+  {
+    title: "Service coils and fans",
+    image: "/coilcleaning.png",
+    summary: "Dust on coils slows heat transfer and increases energy use.",
+    warning: "Lower cooling capacity, noisy fans, or higher power use",
+    practice: "Clean coils with the correct cleaner and check fan blades, bearings, and belts.",
+  },
+  {
+    title: "Inspect ductwork",
+    image: "/ductworkinspection.png",
+    summary: "Leaks and blockages reduce supply air quality and waste energy.",
+    warning: "Uneven cooling or rising utility bills",
+    practice: "Seal leaks with mastic or foil tape and clear any obstruction in the duct route.",
+  },
+  {
+    title: "Test electrical parts yearly",
+    image: "/electricaltesting.png",
+    summary: "Electrical wear can lead to sudden shutdowns and expensive downtime.",
+    warning: "Frequent trips, burnt smell, or intermittent starts",
+    practice: "Check capacitors, contactors, and control boards during annual servicing.",
+  },
+  {
+    title: "Run diagnostics regularly",
+    image: "/systemdiagnostics.png",
+    summary: "Performance checks help spot problems before they become failures.",
+    warning: "Fluctuating temperatures or weak airflow",
+    practice: "Review pressure, airflow, and operating trends before each major season change.",
+  },
+];
 
 const MaintenanceTips = () => (
-  <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-    <h3 className="text-xl font-bold text-orange-600 dark:text-orange-300 mb-4 border-b pb-2">
-      Comprehensive Preventive Maintenance Guide
-    </h3>
-    
-    <div className="space-y-8">
-      {/* Filter Cleaning */}
-      <MaintenanceSection 
-        title="Clean filters every month"
-        image="/FilterClean.png"
-        description="Dirty filters reduce airflow efficiency by up to 15% and force your system to work harder, leading to higher energy consumption and increased wear."
-        warning="Signs of Dirty Filters: Increased dust accumulation, reduced cooling/heating efficiency, and odd odors."
-        bestPractice="Vacuum reusable filters every two weeks or replace pleated filters every 30-90 days."
-      />
+  <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <SEO
+      title="Preventive maintenance"
+      description="Practical maintenance guidance for HVAC and ACMV systems that helps improve reliability and reduce downtime."
+      path="/services/maintenance-tips"
+      image="https://we-engineering.net/banner.png"
+    />
+    <section className="rounded-[2rem] border border-slate-200/80 bg-white/85 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur dark:border-white/10 dark:bg-slate-900/60 sm:p-8">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+          Preventive maintenance
+        </p>
+        <h1 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">
+          Keep HVAC and ACMV systems dependable
+        </h1>
+        <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+          Small routine checks protect cooling performance, extend equipment life, and reduce downtime.
+        </p>
+      </div>
 
-      {/* Fan & Coil Service */}
-      <MaintenanceSection 
-        title="Inspect and service fans and coils every 6 months"
-        image="/coilcleaning.png"
-        description="Dust accumulation on coils reduces heat transfer efficiency by 20-30%, leading to increased energy consumption. Check fan blades for cracks, debris, and ensure motors are properly lubricated."
-        warning="Warning Signs: Decreased cooling capacity, excessive noise, and high electricity usage."
-        bestPractice="Use soft brush and coil cleaner on evaporator coils during seasonal checks."
-      />
-
-      {/* Ductwork Inspection & Sealing */}
-      <MaintenanceSection 
-        title="Inspect and seal ductwork"
-        image="/ductworkinspection.png"
-        description="Leaks in ducts reduce airflow efficiency and increase utility costs. Inspect ducts for blockages or damage."
-        warning="Warning Signs: Uneven heating/cooling, increased energy bills."
-        bestPractice="Seal gaps with mastic or foil tape, and check for obstructions every six months."
-      />
-
-      {/* Electrical Component Testing */}
-      <MaintenanceSection 
-        title="Test electrical components yearly"
-        image="/electricaltesting.png"
-        description="Inspect capacitors, contactors, and circuit boards for signs of wear or damage to prevent failures."
-        warning="Warning Signs: Frequent system shutdowns, burning smells."
-        bestPractice="Perform electrical system diagnostics annually using voltage meters."
-      />
-
-      {/* System Performance Diagnostics */}
-      <MaintenanceSection 
-        title="Run system performance diagnostics"
-        image="/systemdiagnostics.png"
-        description="Check system pressure levels, airflow rates, and efficiency metrics to detect potential issues early."
-        warning="Warning Signs: Weak airflow, fluctuating temperatures."
-        bestPractice="Use diagnostic tools to evaluate system efficiency before seasonal changes."
-      />
-    </div>
+      <div className="mt-8 grid gap-6">
+        {maintenanceItems.map((item, index) => (
+          <MaintenanceCard key={item.title} {...item} index={index} />
+        ))}
+      </div>
+    </section>
   </div>
 );
 
-// Reusable Maintenance Section Component
-const MaintenanceSection = ({ title, image, description, warning, bestPractice }) => (
-  <div className="flex flex-col md:flex-row gap-6">
-    <div className="md:w-1/3 bg-gray-200 border-2 border-dashed rounded-xl w-full h-56 flex items-center justify-center">
-      <img 
-        src={image} 
-        alt={title} 
-        className="max-w-full max-h-full object-contain rounded-xl"
-        onError={(e) => {
-          e.target.src = '/fallback.png'; // Fallback image
-          e.target.alt = 'Image not available';
-        }}
-      />
+const MaintenanceCard = ({ title, image, summary, warning, practice, index }) => (
+  <div className="grid gap-5 rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-white/5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div className={`overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-950/40 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+      <img src={image} alt={title} className="block aspect-[4/3] w-full object-contain" />
     </div>
-    <div className="md:w-2/3">
-      <h4 className="font-semibold text-lg mb-2">{title}</h4>
-      <p className="mb-2">{description}</p>
-      <p className="mb-2"><strong>{warning}</strong></p>
-      <div className="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-md">
-        <span className="font-medium text-blue-700 dark:text-blue-300">Best Practice:</span> 
-        <span className="ml-2">{bestPractice}</span>
+
+    <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-600 dark:text-sky-400">
+        Maintenance step
+      </p>
+      <h2 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">
+        {title}
+      </h2>
+      <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+        {summary}
+      </p>
+
+      <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">
+          Watch for
+        </p>
+        <p className="mt-2 text-sm leading-7 text-slate-700 dark:text-slate-200">
+          {warning}
+        </p>
+      </div>
+
+      <div className="mt-4 rounded-2xl bg-emerald-50 p-4 text-sm leading-7 text-slate-700 dark:bg-emerald-500/10 dark:text-slate-100">
+        <p className="font-semibold text-emerald-700 dark:text-emerald-300">Best practice</p>
+        <p className="mt-2">{practice}</p>
       </div>
     </div>
   </div>

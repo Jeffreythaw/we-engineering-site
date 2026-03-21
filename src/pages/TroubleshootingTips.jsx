@@ -1,91 +1,164 @@
-import React from 'react';
+import React from "react";
+import SEO from "../components/SEO";
+
+const issues = [
+  {
+    title: "Water leaking",
+    image: "/waterleaking.png",
+    summary:
+      "Usually caused by drainage blockage, icing, or poor installation.",
+    causes: [
+      "Blocked drain line",
+      "Frozen evaporator coil",
+      "Poor unit slope or installation",
+    ],
+    action:
+      "Clean the drain line, check airflow, and call service if refrigerant issues are suspected.",
+  },
+  {
+    title: "No cooling",
+    image: "/nocooling.png",
+    summary:
+      "The unit runs, but the space stays warm or cools very slowly.",
+    causes: [
+      "Dirty filters or condenser coil",
+      "Low refrigerant",
+      "Thermostat or compressor fault",
+    ],
+    action:
+      "Check filters and outdoor airflow first, then schedule a technician if the problem persists.",
+  },
+  {
+    title: "No power",
+    image: "/nopower.png",
+    summary:
+      "The system does not start or respond to the controls.",
+    causes: [
+      "Tripped breaker",
+      "Faulty isolator switch",
+      "Battery or control fault",
+    ],
+    action:
+      "Reset the breaker, check the isolator, and inspect the remote or control board.",
+  },
+  {
+    title: "Strange noises",
+    image: "/strangenoises.png",
+    summary:
+      "Rattling, buzzing, or grinding usually points to a mechanical issue.",
+    causes: [
+      "Loose panels or screws",
+      "Debris in the fan path",
+      "Worn bearings or belts",
+    ],
+    action:
+      "Turn the system off, check for loose parts, and get the motor or fan assembly inspected.",
+  },
+  {
+    title: "Foul odors",
+    image: "/foulodors.png",
+    summary:
+      "Bad smells often come from moisture, mold, or dirty filters.",
+    causes: [
+      "Mold in coils or drain pan",
+      "Clogged filters",
+      "Stagnant water in the system",
+    ],
+    action:
+      "Replace filters, clean the coils, and run fan-only mode to dry the system.",
+  },
+  {
+    title: "Uneven cooling",
+    image: "/unevencooling.png",
+    summary:
+      "Some parts of the room are colder than others.",
+    causes: [
+      "Blocked vents",
+      "Poor insulation",
+      "Wrong system sizing or duct leakage",
+    ],
+    action:
+      "Check the airflow path, review the heat load, and inspect ducts for leakage.",
+  },
+  {
+    title: "High energy bills",
+    image: "/highenergy.png",
+    summary:
+      "Often a sign that the system is working harder than it should.",
+    causes: [
+      "Dirty filters or coils",
+      "Low refrigerant",
+      "Old equipment or long runtime",
+    ],
+    action:
+      "Clean the system, verify the set point, and plan for efficiency upgrades if the unit is aging.",
+  },
+];
 
 const TroubleshootingTips = () => (
-  <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-    <h3 className="text-xl font-bold text-orange-600 dark:text-orange-300 mb-4 border-b pb-2">
-      Common Air Conditioning Issues & Troubleshooting
-    </h3>
-    
-    <div className="space-y-8">
-      {/* Water Leaking */}
-      <IssueSection
-        title="Water Leaking"
-        image="/waterleaking.png"
-        description="Water leaking from an air conditioner is a common issue, often caused by improper drainage or system malfunctions. If not addressed, it can lead to water damage or mold growth."
-        causes="Possible Causes: Clogged drain line, frozen evaporator coil, improper unit installation, or low refrigerant levels causing coil icing."
-        troubleshooting="Troubleshooting Steps: Clear the drain line with a wet/dry vacuum or flush with water. Check for frozen coils and ensure proper airflow by cleaning filters. Verify unit tilt for drainage (outdoor units should tilt slightly). Schedule professional service if refrigerant issues are suspected."
-      />
+  <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <SEO
+      title="Common aircon issues"
+      description="Use the symptom, common causes, and practical next step to narrow down common air conditioning problems."
+      path="/services/common-issues"
+      image="https://we-engineering.net/banner.png"
+    />
+    <section className="rounded-[2rem] border border-slate-200/80 bg-white/85 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur dark:border-white/10 dark:bg-slate-900/60 sm:p-8">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+          Troubleshooting
+        </p>
+        <h1 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">
+          Common aircon issues
+        </h1>
+        <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+          Use the symptom to narrow down the cause, then decide whether it is a quick fix or a service call.
+        </p>
+      </div>
 
-      {/* No Cooling */}
-      <IssueSection
-        title="No Cooling"
-        image="/nocooling.png"
-        description="When the air conditioner runs but fails to cool, the indoor environment remains uncomfortable, and energy consumption may increase."
-        causes="Possible Causes: Dirty air filters, low refrigerant levels, blocked condenser unit, or malfunctioning thermostat."
-        troubleshooting="Troubleshooting Steps: Replace or clean air filters every 1-3 months. Ensure the outdoor condenser is free of debris (leaves, dirt). Check thermostat settings and recalibrate if needed. Contact a technician to check for refrigerant leaks or compressor issues."
-      />
-
-      {/* No Power */}
-      <IssueSection
-        title="No Power"
-        image="/nopower.png"
-        description="The air conditioner does not turn on, leaving the space without cooling or air circulation."
-        causes="Possible Causes: Tripped circuit breaker, faulty isolator switch, dead remote batteries, or internal electrical faults."
-        troubleshooting="Troubleshooting Steps: Check the circuit breaker and reset if tripped. Inspect the isolator switch for proper connection. Replace remote batteries. If the issue persists, consult a professional to inspect wiring or control board."
-      />
-
-      {/* Strange Noises */}
-      <IssueSection
-        title="Strange Noises"
-        image="/strangenoises.png"
-        description="Unusual sounds like rattling, buzzing, or grinding indicate mechanical or operational issues that can worsen if ignored."
-        causes="Possible Causes: Loose screws or panels, worn fan belts, debris in the unit, or failing motor bearings."
-        troubleshooting="Troubleshooting Steps: Turn off the unit and inspect for loose components or debris. Tighten screws or panels. Lubricate motor bearings if accessible. For persistent noises, contact a technician to inspect belts, motors, or compressor."
-      />
-
-      {/* Foul Odors */}
-      <IssueSection
-        title="Foul Odors"
-        image="/foulodors.png"
-        description="Unpleasant smells from the air conditioner can affect indoor air quality and indicate underlying issues."
-        causes="Possible Causes: Mold or mildew in the drain pan or coils, clogged filters, or stagnant water in the system."
-        troubleshooting="Troubleshooting Steps: Clean or replace air filters. Use coil cleaner on evaporator coils and clear the drain pan. Run the fan-only mode to dry the system. If odors persist, schedule professional cleaning or check for duct contamination."
-      />
-
-      {/* Uneven Cooling */}
-      <IssueSection
-        title="Uneven Cooling"
-        image="/unevencooling.png"
-        description="Some areas of the space are cooler than others, leading to inconsistent comfort levels."
-        causes="Possible Causes: Blocked vents, poor insulation, improper system sizing, or duct leaks."
-        troubleshooting="Troubleshooting Steps: Ensure vents are open and unobstructed. Check insulation in walls or windows. Verify system capacity matches room size using a heat load calculation. Inspect ductwork for leaks and seal with mastic or foil tape."
-      />
-
-      {/* High Energy Bills */}
-      <IssueSection
-        title="High Energy Bills"
-        image="/highenergy.png"
-        description="Unexpectedly high electricity costs can result from inefficient operation or system malfunctions."
-        causes="Possible Causes: Dirty filters or coils, low refrigerant, outdated system, or excessive runtime due to improper settings."
-        troubleshooting="Troubleshooting Steps: Clean filters and coils regularly. Adjust thermostat to efficient settings (e.g., 24-26°C for tropical climates). Check for refrigerant leaks via professional service. Consider upgrading to an energy-efficient system if the unit is old."
-      />
-    </div>
+      <div className="mt-8 grid gap-6">
+        {issues.map((issue, index) => (
+          <IssueCard key={issue.title} {...issue} index={index} />
+        ))}
+      </div>
+    </section>
   </div>
 );
 
-// Reusable Issue Section Component
-const IssueSection = ({ title, image, description, causes, troubleshooting }) => (
-  <div className="flex flex-col md:flex-row gap-6">
-    <div className="md:w-1/3 bg-gray-200 border-2 border-dashed rounded-xl w-full h-56 flex items-center justify-center text-gray-500">
-      <img src={image} alt={title} className="max-w-full max-h-full object-contain" />
+const IssueCard = ({ title, image, summary, causes, action, index }) => (
+  <div className="grid gap-5 rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-white/5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div className={`overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-950/40 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+      <img src={image} alt={title} className="block aspect-[4/3] w-full object-contain" />
     </div>
-    <div className="md:w-2/3">
-      <h4 className="font-semibold text-lg mb-2">{title}</h4>
-      <p className="mb-2">{description}</p>
-      <p className="mb-2"><strong>{causes}</strong></p>
-      <div className="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-md">
-        <span className="font-medium text-blue-700 dark:text-blue-300">Troubleshooting Steps:</span> 
-        <span className="ml-2">{troubleshooting}</span>
+
+    <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-600 dark:text-sky-400">
+        Symptom
+      </p>
+      <h2 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">
+        {title}
+      </h2>
+      <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+        {summary}
+      </p>
+
+      <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">
+          Common causes
+        </p>
+        <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700 dark:text-slate-200">
+          {causes.map((cause) => (
+            <li key={cause} className="flex gap-2">
+              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-500" />
+              <span>{cause}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-4 rounded-2xl bg-sky-50 p-4 text-sm leading-7 text-slate-700 dark:bg-sky-500/10 dark:text-slate-100">
+        <p className="font-semibold text-sky-700 dark:text-sky-300">What to do</p>
+        <p className="mt-2">{action}</p>
       </div>
     </div>
   </div>

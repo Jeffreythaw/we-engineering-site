@@ -1,78 +1,132 @@
 // src/components/Projects.jsx
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Building2, Factory, Layers3, ShieldCheck, Sparkles } from "lucide-react";
 import ProjectCard from "../ProjectCard";
 
-const Projects = () => {
-  const [activeTab, setActiveTab] = useState("Semiconductor & Cleanroom");
+const projectGroups = [
+  {
+    title: "Semiconductor & Cleanroom",
+    tagColorStart: "#0f52ba",
+    tagColorEnd: "#4fc3f7",
+    icon: <Layers3 size={18} />,
+    summary:
+      "Precision HVAC, cleanroom construction, and utility coordination for high-compliance environments.",
+    projects: [
+      { client: "Sony Electronics Singapore", scope: "ACMV and piping for cleanroom areas" },
+      { client: "Murata Electronics Singapore", scope: "Dryer installation and rotor replacement" },
+      { client: "Tokuyama Singapore", scope: "New cleanroom construction" },
+      { client: "A-STAR IME FSC", scope: "Fire safety certification and utilities works" },
+    ],
+  },
+  {
+    title: "Pharmaceutical & Life Sciences",
+    tagColorStart: "#7c3aed",
+    tagColorEnd: "#1d4ed8",
+    icon: <ShieldCheck size={18} />,
+    summary:
+      "Lab fit-out, compliance-led M&E execution, and controlled-environment upgrades.",
+    projects: [
+      { client: "GSK Singapore", scope: "Lab fit-up and black utilities piping (SGD 8.6M)" },
+      { client: "Amgen Singapore", scope: "QC lab works and ACMV systems" },
+      { client: "BioMedical Sciences Institutes", scope: "Reinstatement and consultancy services" },
+    ],
+  },
+  {
+    title: "Industrial & Manufacturing",
+    tagColorStart: "#f97316",
+    tagColorEnd: "#f59e0b",
+    icon: <Factory size={18} />,
+    summary:
+      "Reliable cooling, plant maintenance, and production support for industrial operations.",
+    projects: [
+      { client: "Shimano Singapore", scope: "AHU upgrades" },
+      { client: "Skyworks Global", scope: "Chiller and cooling tower replacements" },
+      { client: "Hamilton Aerospace", scope: "Comprehensive chiller maintenance" },
+    ],
+  },
+  {
+    title: "Commercial & Retail",
+    tagColorStart: "#0f766e",
+    tagColorEnd: "#34d399",
+    icon: <Building2 size={18} />,
+    summary:
+      "Tenant fit-outs, M&E packages, and multi-stakeholder coordination for occupied buildings.",
+    projects: [
+      { client: "Big Box Pte Ltd", scope: "M&E works, fire protection (SGD 44.9M)" },
+      { client: "Norinchukin Bank", scope: "Office fit-out M&E services" },
+      { client: "SG @ Bedok", scope: "Miscellaneous ACMV works" },
+    ],
+  },
+  {
+    title: "Maintenance Contracts",
+    tagColorStart: "#f59e0b",
+    tagColorEnd: "#f97316",
+    icon: <Sparkles size={18} />,
+    summary:
+      "Long-term maintenance, diagnostics, and preventive servicing for critical systems.",
+    projects: [
+      { client: "IME SP2", scope: "HVAC and system maintenance (2023–2025)" },
+      { client: "Hamilton Aerospace", scope: "Chiller plant maintenance" },
+      { client: "Multi-site buildings", scope: "Preventive maintenance contracts" },
+    ],
+  },
+];
 
-  const projectGroups = [
-    {
-      title: "Semiconductor & Cleanroom",
-      tagColorStart: "#0052D4",
-      tagColorEnd: "#65C7F7",
-      projects: [
-        { client: "Sony Electronics Singapore", scope: "ACMV and piping for cleanroom areas" },
-        { client: "Murata Electronics Singapore", scope: "Dryer installation and rotor replacement" },
-        { client: "Tokuyama Singapore", scope: "New cleanroom construction" },
-        { client: "A-STAR IME FSC", scope: "Fire safety certification and utilities works" },
-      ],
-    },
-    {
-      title: "Pharmaceutical & Life Sciences",
-      tagColorStart: "#8e2de2",
-      tagColorEnd: "#4a00e0",
-      projects: [
-        { client: "GSK Singapore", scope: "Lab fit-up and black utilities piping (SGD 8.6M)" },
-        { client: "Amgen Singapore", scope: "QC lab works and ACMV systems" },
-        { client: "BioMedical Sciences Institutes", scope: "Reinstatement and consultancy services" },
-      ],
-    },
-    {
-      title: "Industrial & Manufacturing",
-      tagColorStart: "#FF512F",
-      tagColorEnd: "#F09819",
-      projects: [
-        { client: "Shimano Singapore", scope: "AHU upgrades" },
-        { client: "Skyworks Global", scope: "Chiller and cooling tower replacements" },
-        { client: "Hamilton Aerospace", scope: "Comprehensive chiller maintenance" },
-      ],
-    },
-    {
-      title: "Commercial & Retail",
-      tagColorStart: "#1D976C",
-      tagColorEnd: "#93F9B9",
-      projects: [
-        { client: "Big Box Pte Ltd", scope: "M&E works, fire protection (SGD 44.9M)" },
-        { client: "Norinchukin Bank", scope: "Office fit-out M&E services" },
-        { client: "SG @ Bedok", scope: "Miscellaneous ACMV works" },
-      ],
-    },
-    {
-      title: "Maintenance Contracts",
-      tagColorStart: "#f7971e",
-      tagColorEnd: "#ffd200",
-      projects: [
-        { client: "IME SP2", scope: "HVAC & system maintenance (2023–2025)" },
-        { client: "Hamilton Aerospace", scope: "Chiller plant maintenance" },
-        { client: "Multi-site buildings", scope: "Preventive maintenance contracts" },
-      ],
-    },
-  ];
+const Projects = () => {
+  const [activeTab, setActiveTab] = useState(projectGroups[0].title);
+
+  const activeGroup = useMemo(
+    () => projectGroups.find((group) => group.title === activeTab) ?? projectGroups[0],
+    [activeTab]
+  );
 
   return (
-    <section id="projects" className="section-spacing bg-white dark:bg-gray-800 rounded-xl shadow mt-12 p-6">
-      <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Key Projects</h2>
+    <section
+      id="projects"
+      className="relative overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8"
+    >
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/70 to-transparent" />
 
-      {/* Tab Buttons */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+            Track record
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
+            Selected work across regulated and occupied environments.
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+            The portfolio spans semiconductor, life sciences, industrial facilities, commercial fit-outs, and maintenance contracts.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {[
+            "Cleanroom",
+            "Pharma",
+            "Industrial",
+            "Commercial",
+          ].map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-medium text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
         {projectGroups.map((group) => (
           <button
             key={group.title}
             onClick={() => setActiveTab(group.title)}
-            className={`px-4 py-2 rounded-full border text-sm font-medium transition ${
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
               activeTab === group.title
-                ? "bg-blue-600 text-white shadow"
-                : "bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300"
+                ? "border-sky-500 bg-sky-500 text-white shadow-lg shadow-sky-500/20"
+                : "border-slate-200 bg-white text-slate-600 hover:border-sky-300 hover:text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-sky-500 dark:hover:text-white"
             }`}
           >
             {group.title}
@@ -80,18 +134,77 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Active Tab Projects */}
-      {projectGroups
-        .filter((group) => group.title === activeTab)
-        .map((group, idx) => (
-          <ProjectCard
-            key={idx}
-            title={group.title}
-            tagColorStart={group.tagColorStart}
-            tagColorEnd={group.tagColorEnd}
-            projects={group.projects}
-          />
-        ))}
+      <motion.div
+        key={activeGroup.title}
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.28 }}
+        className="mt-6 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]"
+      >
+        <div className="rounded-3xl border border-slate-200 bg-slate-50/80 p-5 dark:border-white/10 dark:bg-white/5">
+          <div className="flex items-center gap-3">
+            <div
+              className="flex h-11 w-11 items-center justify-center rounded-2xl text-white"
+              style={{
+                backgroundImage: `linear-gradient(135deg, ${activeGroup.tagColorStart}, ${activeGroup.tagColorEnd})`,
+              }}
+            >
+              {activeGroup.icon}
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                {activeGroup.title}
+              </h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                {activeGroup.summary}
+              </p>
+            </div>
+          </div>
+          <div className="mt-5">
+            <ProjectCard
+              title={activeGroup.title}
+              tagColorStart={activeGroup.tagColorStart}
+              tagColorEnd={activeGroup.tagColorEnd}
+              projects={activeGroup.projects}
+            />
+          </div>
+        </div>
+
+        <div className="grid gap-4">
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/70">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
+              Delivery focus
+            </p>
+            <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              <li>• Precise ACMV and utilities planning for sensitive environments</li>
+              <li>• Strong coordination across design, procurement, and site execution</li>
+              <li>• Maintenance-first thinking for reliability and lifecycle performance</li>
+              <li>• Safety, cleanliness, and compliance built into every stage</li>
+            </ul>
+          </div>
+
+          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 text-white shadow-sm dark:border-white/10">
+            <div className="relative aspect-[4/3] min-h-[220px]">
+              <img
+                src="/banner.png"
+                alt="WE Engineering project banner"
+                className="absolute inset-0 h-full w-full object-cover opacity-70"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent" />
+              <div className="relative flex h-full flex-col justify-end p-5">
+                <div className="max-w-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">
+                    Built for Singapore sites
+                  </p>
+                  <p className="mt-2 text-lg font-semibold">
+                    From feasibility to closeout, the workflow stays practical and accountable.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 };
