@@ -9,23 +9,22 @@
       }
     }
   ],
-  "redirects": [
+  "cleanUrls": true,
+  "headers": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "we-engineering-site.vercel.app"
         }
       ],
-      "destination": "https://www.we-engineering.net/:path*",
-      "permanent": true
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }
