@@ -9,21 +9,17 @@
       }
     }
   ],
-  "headers": [
+  "redirects": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "we-engineering-site.vercel.app"
         }
       ],
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
+      "destination": "https://www.we-engineering.net/:path*",
+      "permanent": true
     }
   ],
   "routes": [
