@@ -5,7 +5,7 @@ import BrandLogo from "./BrandLogo";
 
 const quickLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/#leadership" },
+  { label: "Leadership", href: "/leadership" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
   { label: "Contact", href: "/contact" },

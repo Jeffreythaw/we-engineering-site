@@ -6,7 +6,6 @@ import {
   ArrowUpRight,
   Building2,
   ChevronDown,
-  Layers3,
   Menu,
   Moon,
   Sun,
@@ -79,7 +78,7 @@ const NavBar = ({ isDark, setIsDark }) => {
           <Link to="/projects" className={navLinkClass("/projects")}>
             Projects
           </Link>
-          <Link to="/#leadership" className={navLinkClass("/#leadership")}>
+          <Link to="/leadership" className={navLinkClass("/leadership")}>
             Leadership
           </Link>
           <Link to="/contact" className={navLinkClass("/contact")}>
@@ -98,45 +97,6 @@ const NavBar = ({ isDark, setIsDark }) => {
                 dropdownOpen ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0"
               }`}
             >
-              <Link
-                to="/services"
-                className={menuItemClass}
-                onClick={() => setDropdownOpen(false)}
-              >
-                <Building2 size={18} className="mt-0.5 shrink-0 text-sky-600" />
-                <span>
-                  <span className="block font-semibold">Services Overview</span>
-                  <span className="block text-sm text-slate-500 dark:text-slate-400">
-                    Our full service lineup
-                  </span>
-                </span>
-              </Link>
-              <Link
-                to="/projects"
-                className={menuItemClass}
-                onClick={() => setDropdownOpen(false)}
-              >
-                <Layers3 size={18} className="mt-0.5 shrink-0 text-sky-600" />
-                <span>
-                  <span className="block font-semibold">Sectors & Projects</span>
-                  <span className="block text-sm text-slate-500 dark:text-slate-400">
-                    Portfolio by sector
-                  </span>
-                </span>
-              </Link>
-              <Link
-                to="/contact"
-                className={menuItemClass}
-                onClick={() => setDropdownOpen(false)}
-              >
-                <ArrowUpRight size={18} className="mt-0.5 shrink-0 text-sky-600" />
-                <span>
-                  <span className="block font-semibold">Contact Us</span>
-                  <span className="block text-sm text-slate-500 dark:text-slate-400">
-                    Call or visit the office
-                  </span>
-                </span>
-              </Link>
               <div className="my-2 border-t border-slate-200 dark:border-white/10" />
               <Link
                 to="/services/basic-knowledge"
@@ -244,7 +204,7 @@ const NavBar = ({ isDark, setIsDark }) => {
               Projects
             </Link>
             <Link
-              to="/#leadership"
+              to="/leadership"
               className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
               onClick={() => setMobileMenuOpen(false)}
             >

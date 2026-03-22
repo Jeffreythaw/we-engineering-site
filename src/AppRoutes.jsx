@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ContactPage from './pages/ContactPage';
+import LeadershipPage from './pages/LeadershipPage';
 import BasicKnowledge from './pages/BasicKnowledge';
 import HeatLoadCalculator from './pages/HeatLoadCalculator';
 import TroubleshootingTips from './pages/TroubleshootingTips';
@@ -17,6 +18,7 @@ const AppRoutes = () => {
   <Route path="/" element={<HomePage />} />
   <Route path="/services" element={<ServicesPage />} />
   <Route path="/projects" element={<ProjectsPage />} />
+  <Route path="/leadership" element={<LeadershipPage />} />
   <Route path="/contact" element={<ContactPage />} />
   <Route path="/services/basic-knowledge" element={<BasicKnowledge />} />
   <Route path="/services/heatload-calculation" element={<HeatLoadCalculator />} />
