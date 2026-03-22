@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  BadgeCheck,
   Building2,
   CircuitBoard,
   ClipboardList,
@@ -68,6 +69,30 @@ const aboutHighlights = [
     icon: <ShieldCheck size={18} />,
     title: "Trusted scopes",
     body: "ACMV, HVAC, cleanroom, maintenance, and project management.",
+  },
+];
+
+const leaders = [
+  {
+    photo: "/Eric.png",
+    name: "Eric Auiyong",
+    title: "Managing Director",
+    summary:
+      "Project leadership with deep HVAC, M&E, and cleanroom experience.",
+  },
+  {
+    photo: "/weiren.png",
+    name: "Walter Wu Weiren",
+    title: "Operations Director",
+    summary:
+      "Operational coordination and site execution across project phases.",
+  },
+  {
+    photo: "/Jeffrey.jpeg",
+    name: "Pye Hein Thaw @ Jeffrey",
+    title: "Service Manager",
+    summary:
+      "Service support, maintenance coordination, and responsive follow-through.",
   },
 ];
 
@@ -212,6 +237,58 @@ const HomePage = () => {
         </section>
 
         <Projects />
+
+        <section
+          id="leadership"
+          className="rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+              Leadership
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
+              Leadership that keeps delivery practical.
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              The team combines technical depth with site discipline and clear handoff.
+            </p>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {leaders.map((leader) => (
+              <article
+                key={leader.name}
+                className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-50/80 dark:border-white/10 dark:bg-white/5"
+              >
+                <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-white/5 dark:via-white/10 dark:to-slate-900">
+                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-slate-950/45 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white backdrop-blur">
+                    <BadgeCheck size={14} />
+                    Leadership
+                  </div>
+                  <div className="flex aspect-[4/3] items-center justify-center p-4">
+                    <img
+                      src={leader.photo}
+                      alt={leader.name}
+                      className="max-h-full max-w-full object-contain drop-shadow-[0_16px_30px_rgba(15,23,42,0.18)]"
+                    />
+                  </div>
+                </div>
+
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                    {leader.name}
+                  </h3>
+                  <p className="mt-1 text-sm font-medium text-sky-600 dark:text-sky-400">
+                    {leader.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                    {leader.summary}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <section
           id="contact"
