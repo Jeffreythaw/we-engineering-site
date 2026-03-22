@@ -319,22 +319,24 @@ const HomePage = () => {
 
           <div className="relative isolate flex flex-col items-center gap-6 overflow-visible pb-10 sm:pb-12 lg:block lg:min-h-[760px] lg:pb-0">
             {mvvCards.map((card, index) => (
-              <motion.article
+              <div
                 key={card.label}
+                className={`relative w-full max-w-[300px] sm:max-w-[360px] lg:absolute lg:h-[420px] lg:w-[420px] lg:max-w-none ${
+                  index === 0
+                    ? "lg:top-[52px] lg:left-[48px]"
+                    : index === 1
+                    ? "lg:top-[18px] lg:left-[calc(50%-220px)]"
+                    : "lg:top-[260px] lg:right-[96px]"
+                }`}
+              >
+              <motion.article
                 onHoverStart={() => replayMvvAnimation(card.label)}
                 initial={{ opacity: 0, y: 28, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 whileHover={{ scale: 1.03, y: -6 }}
                 transition={{ duration: 0.5, delay: index * 0.16 }}
                 viewport={{ once: true, margin: "-80px" }}
-                className={`relative flex aspect-square w-full max-w-[300px] flex-col items-center justify-center overflow-hidden rounded-full border border-white/12 bg-gradient-to-br ${card.accent} p-5 text-center text-white shadow-[0_24px_80px_rgba(15,23,42,0.24)] ${card.glow} sm:max-w-[360px] sm:p-7 lg:absolute lg:h-[420px] lg:w-[420px] lg:max-w-none lg:p-8`}
-                style={
-                  index === 0
-                    ? { top: "52px", left: "48px" }
-                    : index === 1
-                    ? { top: "18px", left: "calc(50% - 220px)" }
-                    : { top: "260px", right: "96px" }
-                }
+                className={`relative flex aspect-square w-full flex-col items-center justify-center overflow-hidden rounded-full border border-white/12 bg-gradient-to-br ${card.accent} p-5 text-center text-white shadow-[0_24px_80px_rgba(15,23,42,0.24)] ${card.glow} sm:p-7 lg:h-[420px] lg:w-[420px] lg:p-8`}
               >
                 <motion.div
                   key={`${card.label}-${mvvHoverTick[card.label] || 0}`}
@@ -352,6 +354,7 @@ const HomePage = () => {
                   {card.body}
                 </p>
               </motion.article>
+              </div>
             ))}
           </div>
         </section>
