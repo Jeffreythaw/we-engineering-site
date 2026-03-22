@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -124,6 +124,15 @@ const mvvCards = [
 ];
 
 const HomePage = () => {
+  const [mvvHoverTick, setMvvHoverTick] = useState({});
+
+  const replayMvvAnimation = (label) => {
+    setMvvHoverTick((current) => ({
+      ...current,
+      [label]: (current[label] || 0) + 1,
+    }));
+  };
+
   return (
     <div className="w-full">
       <SEO
@@ -308,15 +317,17 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="relative isolate flex flex-col items-center gap-8 lg:block lg:min-h-[760px]">
+          <div className="relative isolate flex flex-col items-center gap-6 overflow-visible pb-10 sm:pb-12 lg:block lg:min-h-[760px] lg:pb-0">
             {mvvCards.map((card, index) => (
               <motion.article
                 key={card.label}
+                onHoverStart={() => replayMvvAnimation(card.label)}
                 initial={{ opacity: 0, y: 28, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                whileHover={{ scale: 1.03, y: -6 }}
                 transition={{ duration: 0.5, delay: index * 0.16 }}
                 viewport={{ once: true, margin: "-80px" }}
-                className={`relative flex aspect-square w-full max-w-[360px] flex-col items-center justify-center overflow-hidden rounded-full border border-white/12 bg-gradient-to-br ${card.accent} p-6 text-center text-white shadow-[0_24px_80px_rgba(15,23,42,0.24)] ${card.glow} sm:max-w-[400px] sm:p-8 lg:absolute lg:h-[420px] lg:w-[420px] lg:max-w-none lg:p-8`}
+                className={`relative flex aspect-square w-full max-w-[300px] flex-col items-center justify-center overflow-hidden rounded-full border border-white/12 bg-gradient-to-br ${card.accent} p-5 text-center text-white shadow-[0_24px_80px_rgba(15,23,42,0.24)] ${card.glow} sm:max-w-[360px] sm:p-7 lg:absolute lg:h-[420px] lg:w-[420px] lg:max-w-none lg:p-8`}
                 style={
                   index === 0
                     ? { top: "52px", left: "48px" }
@@ -325,11 +336,19 @@ const HomePage = () => {
                     : { top: "260px", right: "96px" }
                 }
               >
+                <motion.div
+                  key={`${card.label}-${mvvHoverTick[card.label] || 0}`}
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-4 rounded-full border border-white/25"
+                  initial={{ scale: 0.88, opacity: 0.55 }}
+                  animate={{ scale: [0.88, 1.04, 1], opacity: [0.55, 0.2, 0] }}
+                  transition={{ duration: 1.05, ease: "easeOut" }}
+                />
                 <div className="mb-4 inline-flex items-center rounded-full border border-white/20 bg-white/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-white/90 backdrop-blur">
                   {card.label}
                 </div>
                 <h3 className="text-2xl font-semibold sm:text-3xl">{card.title}</h3>
-                <p className="mt-4 max-w-[260px] text-sm leading-7 text-white/88 sm:max-w-[280px]">
+                <p className="mt-4 max-w-[250px] text-sm leading-7 text-white/88 sm:max-w-[280px]">
                   {card.body}
                 </p>
               </motion.article>
