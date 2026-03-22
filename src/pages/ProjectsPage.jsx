@@ -43,15 +43,22 @@ const highlights = [
   { label: "IME SP2", scope: "HVAC and system maintenance" },
 ];
 
+const makeProjectPhotos = (folder, files) =>
+  files.map((fileName, index) => ({
+    src: `/projects/${encodeURIComponent(folder)}/${encodeURIComponent(fileName)}`,
+    label: `Photo ${String(index + 1).padStart(2, "0")}`,
+  }));
+
 const projectCases = [
   {
     key: "tai-seng-exchange",
     name: "TaiSeng Exchange",
+    folder: "TSX",
     address: "1 TaiSeng Avenue, Tower B, Level 3",
     summary:
       "Current site photo set from the TSX folder, presented as a simple animated viewer.",
     tags: ["ACMV", "Site coordination", "Progress photos"],
-    photos: [
+    photos: makeProjectPhotos("TSX", [
       "1.jpg",
       "2.jpg",
       "3.jpg",
@@ -72,10 +79,17 @@ const projectCases = [
       "17.jpg",
       "18.jpg",
       "19.jpg",
-    ].map((fileName, index) => ({
-      src: `/projects/TSX/${fileName}`,
-      label: `Photo ${String(index + 1).padStart(2, "0")}`,
-    })),
+    ]),
+  },
+  {
+    key: "harbourlink-innohub",
+    name: "HarbourLink InnoHub",
+    folder: "HBL #02-02",
+    address: "61/63 Alexandra Terrace, Unit #02-02",
+    summary:
+      "A second project case with its own animated photo set, ready for more folders later.",
+    tags: ["ACMV", "Fit-out", "Progress photos"],
+    photos: makeProjectPhotos("HBL #02-02", ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"]),
   },
 ];
 
