@@ -54,6 +54,7 @@ const projectCases = [
     key: "tai-seng-exchange",
     name: "TaiSeng Exchange",
     folder: "TSX",
+    status: "Ongoing",
     address: "1 TaiSeng Avenue, Tower B, Level 3",
     summary:
       "Office and cleanroom project covering full fit-out and site delivery across multiple trades.",
@@ -99,6 +100,7 @@ const projectCases = [
     key: "harbourlink-innohub",
     name: "HarbourLink InnoHub",
     folder: "HBL #02-02",
+    status: "Completed",
     address: "61/63 Alexandra Terrace, Unit #02-02",
     summary:
       "ACMV-only package focused on ducting, insulation, and VAV control.",
@@ -184,9 +186,20 @@ const ProjectsViewer = () => {
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
             Current project
           </p>
-          <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-white">
-            {activeProject.name}
-          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <p className="text-sm font-semibold text-slate-900 dark:text-white">
+              {activeProject.name}
+            </p>
+            <span
+              className={`rounded-full px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.22em] ${
+                activeProject.status === "Completed"
+                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                  : "bg-amber-500/10 text-amber-600 dark:text-amber-300"
+              }`}
+            >
+              {activeProject.status}
+            </span>
+          </div>
           <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">
             {activeProject.address}
           </p>
@@ -219,6 +232,9 @@ const ProjectsViewer = () => {
             }`}
           >
             {project.name}
+            <span className="ml-2 text-[0.65rem] uppercase tracking-[0.18em] opacity-80">
+              {project.status}
+            </span>
           </button>
         ))}
       </div>
@@ -280,9 +296,20 @@ const ProjectsViewer = () => {
               {activePhoto.label}
             </div>
             <div className="absolute bottom-4 left-4 right-4 rounded-3xl border border-white/15 bg-slate-950/70 px-4 py-3 text-white backdrop-blur">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-300">
-                {activeProject.name}
-              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-300">
+                  {activeProject.name}
+                </p>
+                <span
+                  className={`rounded-full px-2 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.18em] ${
+                    activeProject.status === "Completed"
+                      ? "bg-emerald-500/15 text-emerald-200"
+                      : "bg-amber-500/15 text-amber-200"
+                  }`}
+                >
+                  {activeProject.status}
+                </span>
+              </div>
               <p className="mt-1 text-sm leading-6 text-white/85">
                 {activeProject.summary}
               </p>
@@ -363,6 +390,9 @@ const ProjectsViewer = () => {
           <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-white/5">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
               Scope
+            </p>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+              {activeProject.status}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {activeProject.scopeBullets.map((item) => (
