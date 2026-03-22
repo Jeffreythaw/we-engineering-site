@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Building2,
+  CircuitBoard,
   CheckCircle2,
   ClipboardList,
   Compass,
   Layers3,
   ShieldCheck,
   Sparkles,
+  Wind,
+  Wrench,
 } from "lucide-react";
 import ServiceCard from "../ServiceCard";
 import LeadershipSection from "../components/LeadershipSection";
@@ -19,35 +22,35 @@ import BrandLogo from "../components/BrandLogo";
 
 const services = [
   {
-    icon: "/ACMV.png",
+    icon: <Wind size={28} className="text-white" />,
     title: "ACMV & HVAC Systems",
     tagColor: "#0f52ba",
     description:
       "Design and installation of ductwork, piping, VRF systems, chilled water systems, and cleanroom air handling.",
   },
   {
-    icon: "/Work.png",
+    icon: <CircuitBoard size={28} className="text-white" />,
     title: "M&E Works",
     tagColor: "#0f766e",
     description:
       "Turnkey mechanical and electrical engineering, utilities installation, and infrastructure upgrades.",
   },
   {
-    icon: "/Cleanroom.png",
+    icon: <ShieldCheck size={28} className="text-white" />,
     title: "Cleanroom Construction",
     tagColor: "#7c3aed",
     description:
       "Design, construction, and validation of Class 10k and 100k cleanrooms.",
   },
   {
-    icon: "/Maintenance.png",
+    icon: <Wrench size={28} className="text-white" />,
     title: "Preventive Maintenance",
     tagColor: "#f97316",
     description:
       "Comprehensive maintenance for ACMV, chiller plants, and utilities systems.",
   },
   {
-    icon: "/ProjectManagement.png",
+    icon: <ClipboardList size={28} className="text-white" />,
     title: "Consultancy & Project Management",
     tagColor: "#db2777",
     description:

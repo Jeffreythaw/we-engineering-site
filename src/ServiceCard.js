@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 function ServiceCard({ icon, title, description, tagColor, index }) {
+  const isIconElement = React.isValidElement(icon);
+
   return (
     <motion.article
       className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition dark:border-white/10 dark:bg-slate-900/80"
@@ -19,10 +21,20 @@ function ServiceCard({ icon, title, description, tagColor, index }) {
 
       <div className="relative flex items-start gap-4">
         <div
-          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 shadow-sm dark:border-white/10 dark:bg-white/5"
-          style={{ boxShadow: `0 14px 30px ${tagColor}22` }}
+          className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-[1.4rem] border border-white/20 shadow-[0_14px_30px_rgba(15,23,42,0.12)]"
+          style={{
+            backgroundImage: `linear-gradient(135deg, ${tagColor}, ${tagColor}bb)`,
+            boxShadow: `0 14px 30px ${tagColor}2e`,
+          }}
         >
-          <img src={icon} alt={title} className="h-8 w-8 object-contain" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_45%)]" />
+          {isIconElement ? (
+            <span className="relative flex h-9 w-9 items-center justify-center text-white">
+              {icon}
+            </span>
+          ) : (
+            <img src={icon} alt={title} className="relative h-9 w-9 object-contain" />
+          )}
         </div>
 
         <div className="min-w-0 flex-1">
