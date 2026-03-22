@@ -22,6 +22,24 @@ const aboutHighlights = [
   },
 ];
 
+const mvvCards = [
+  {
+    label: "Mission",
+    title: "Practical support",
+    body: "Deliver work that stays usable on real sites, real schedules, and real handovers.",
+  },
+  {
+    label: "Vision",
+    title: "Trusted delivery",
+    body: "Be the team clients call when quality, cleanliness, and coordination matter most.",
+  },
+  {
+    label: "Values",
+    title: "Steady standards",
+    body: "Keep precision, accountability, and clear communication at the center of every stage.",
+  },
+];
+
 const HomePage = () => {
   return (
     <div className="w-full">
@@ -110,6 +128,41 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+        <div className="rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+              Mission, vision, values
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
+              Three commitments that guide the work.
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              Short, direct, and easy to scan.
+            </p>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {mvvCards.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-3xl border border-slate-200 bg-slate-50/80 p-5 dark:border-white/10 dark:bg-white/5"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
+                  {item.label}
+                </p>
+                <h3 className="mt-3 text-xl font-semibold text-slate-900 dark:text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                  {item.body}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
