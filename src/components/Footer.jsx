@@ -20,6 +20,9 @@ const services = [
 const enquiryText =
   "Hello WE Engineering, I would like to discuss a project scope. Please review the site, timeline, and requirements when convenient.";
 
+const mapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=WCEGA%20Tower%2C%2021%20Bukit%20Batok%20Cres%2C%20%2329-81%2C%20Singapore%20658065";
+
 const Footer = () => {
   const [copied, setCopied] = useState(false);
 
@@ -130,17 +133,64 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-          <iframe
-            title="WE Engineering Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.4934951136814!2d103.75720113814559!3d1.3371481252415036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da106e2359f501%3A0xe711c6cdf0d7a4ad!2sSingapore%20658065!5e0!3m2!1sen!2ssg!4v1716355048575!5m2!1sen!2ssg"
-            width="100%"
-            height="260"
-            className="border-0"
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <div className="mt-10 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(15,23,42,0.24)]">
+          <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-4 sm:px-5">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-300">
+                <MapPin size={18} />
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/50">
+                  Office location
+                </p>
+                <p className="mt-1 text-sm text-white/80">
+                  WCEGA Tower, Singapore 658065
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden rounded-full border border-white/10 bg-white/8 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/12 sm:inline-flex"
+            >
+              Open in Maps
+            </a>
+          </div>
+
+          <div className="relative">
+            <iframe
+              title="WE Engineering Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.4934951136814!2d103.75720113814559!3d1.3371481252415036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da106e2359f501%3A0xe711c6cdf0d7a4ad!2sSingapore%20658065!5e0!3m2!1sen!2ssg!4v1716355048575!5m2!1sen!2ssg"
+              width="100%"
+              height="280"
+              className="block border-0 grayscale-[0.12] contrast-105 saturate-90 sm:h-[320px]"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.05),transparent_30%,rgba(2,6,23,0.22))]" />
+            <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3 sm:bottom-5 sm:left-5 sm:right-5">
+              <div className="max-w-[16rem] rounded-2xl border border-white/15 bg-slate-950/70 px-4 py-3 text-white backdrop-blur">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-sky-300">
+                  Visit us
+                </p>
+                <p className="mt-1 text-sm leading-6 text-white/85">
+                  Practical support from WCEGA Tower, Bukit Batok.
+                </p>
+              </div>
+
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400 sm:hidden"
+              >
+                Open Maps
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
