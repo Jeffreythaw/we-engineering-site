@@ -88,11 +88,17 @@ const ProjectsViewer = () => {
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
+  const [hasImageError, setHasImageError] = useState(false);
 
   useEffect(() => {
     setActivePhotoIndex(0);
     setDirection(1);
+    setHasImageError(false);
   }, [activeProject.key]);
+
+  useEffect(() => {
+    setHasImageError(false);
+  }, [activePhotoIndex, activeProject.key]);
 
   useEffect(() => {
     if (!activeProject.photos.length || isPaused) return undefined;
@@ -108,6 +114,7 @@ const ProjectsViewer = () => {
   const goToPhoto = (nextIndex) => {
     setDirection(nextIndex > activePhotoIndex ? 1 : -1);
     setActivePhotoIndex(nextIndex);
+    setHasImageError(false);
   };
 
   const activePhoto = activeProject.photos[activePhotoIndex];
@@ -182,19 +189,48 @@ const ProjectsViewer = () => {
             onMouseLeave={() => setIsPaused(false)}
           >
             <AnimatePresence mode="wait" custom={direction}>
-              <motion.img
-                key={activePhoto.src}
-                src={activePhoto.src}
-                alt={`${activeProject.name} ${activePhoto.label}`}
-                className="absolute inset-0 h-full w-full object-cover object-center"
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                custom={direction}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                loading="lazy"
-              />
+              {!hasImageError ? (
+                <motion.img
+                  key={activePhoto.src}
+                  src={activePhoto.src}
+                  alt={`${activeProject.name} ${activePhoto.label}`}
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  custom={direction}
+                  transition={{ duration: 0.45, ease: "easeOut" }}
+                  loading="lazy"
+                  onError={() => setHasImageError(true)}
+                />
+              ) : (
+                <motion.div
+                  key={`${activePhoto.src}-fallback`}
+                  className="absolute inset-0 flex items-center justify-center px-6 text-center text-white"
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  custom={direction}
+                  transition={{ duration: 0.45, ease: "easeOut" }}
+                >
+                  <div className="max-w-md rounded-[2rem] border border-white/10 bg-slate-950/60 p-6 backdrop-blur">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">
+                      Image unavailable
+                    </p>
+                    <h3 className="mt-3 text-2xl font-semibold">
+                      {activeProject.name}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-white/75">
+                      The project image did not load, but the case study remains available.
+                    </p>
+                    <p className="mt-4 text-xs uppercase tracking-[0.24em] text-white/55">
+                      {activePhoto.label}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
 
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(2,6,23,0.52))]" />
@@ -273,6 +309,9 @@ const ProjectsViewer = () => {
                     alt={`${activeProject.name} thumbnail ${index + 1}`}
                     className="block h-20 w-16 shrink-0 object-cover sm:h-24 sm:w-20"
                     loading="lazy"
+                    onError={(event) => {
+                      event.currentTarget.src = "/banner.png";
+                    }}
                   />
                 </button>
               ))}
