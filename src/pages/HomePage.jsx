@@ -365,13 +365,13 @@ const HomePage = () => {
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
-                Contact
+                Start a project
               </p>
               <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
                 Need support for an HVAC or M&E scope?
               </h2>
               <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                Call us for new projects, maintenance support, or engineering consultation.
+                Call us for new projects, maintenance support, or engineering consultation. We will review the scope and follow up by phone.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
@@ -380,46 +380,37 @@ const HomePage = () => {
                 >
                   Call +65 8366 8738
                 </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-950/20 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                >
+                  View contact details
+                </a>
               </div>
             </div>
 
             <div className="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-white/5">
-              <div className="grid gap-3 text-sm text-slate-600 dark:text-slate-300 sm:grid-cols-2">
+              <div className="grid gap-3 text-sm text-slate-600 dark:text-slate-300 sm:grid-cols-3">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 dark:text-slate-500">
-                    Address
+                    Typical response
                   </p>
                   <p className="mt-2 leading-7">
-                    WCEGA Tower, 21 Bukit Batok Cres, #29-81, Singapore 658065
+                    Reviewed during business hours
                   </p>
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 dark:text-slate-500">
-                    Phone
+                    What to share
                   </p>
-                  <p className="mt-2 leading-7">+65 8366 8738</p>
+                  <p className="mt-2 leading-7">Scope, site location, and timeline</p>
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 dark:text-slate-500">
-                    Working hours
+                    Best for
                   </p>
-                  <p className="mt-2 leading-7">Mon - Fri, 9:00 AM - 6:00 PM</p>
+                  <p className="mt-2 leading-7">New work, maintenance, and consultation</p>
                 </div>
-              </div>
-
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-950/30">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">
-                  Project enquiry
-                </p>
-                <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                  Tell us the scope, site location, and timeline. We will review and respond by phone.
-                </p>
-                <a
-                  href="tel:+6583668738"
-                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500"
-                >
-                  Call to discuss
-                </a>
               </div>
             </div>
           </div>
