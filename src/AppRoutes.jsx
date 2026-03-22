@@ -2,6 +2,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import ProjectsPage from './pages/ProjectsPage';
+import ContactPage from './pages/ContactPage';
 import BasicKnowledge from './pages/BasicKnowledge';
 import HeatLoadCalculator from './pages/HeatLoadCalculator';
 import TroubleshootingTips from './pages/TroubleshootingTips';
@@ -12,6 +15,9 @@ const AppRoutes = () => {
   return (
 <Routes>
   <Route path="/" element={<HomePage />} />
+  <Route path="/services" element={<ServicesPage />} />
+  <Route path="/projects" element={<ProjectsPage />} />
+  <Route path="/contact" element={<ContactPage />} />
   <Route path="/services/basic-knowledge" element={<BasicKnowledge />} />
   <Route path="/services/heatload-calculation" element={<HeatLoadCalculator />} />
   <Route path="/services/common-issues" element={<TroubleshootingTips />} />

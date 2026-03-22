@@ -1,58 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  BadgeCheck,
-  Building2,
-  CircuitBoard,
-  ClipboardList,
-  Compass,
-  Factory,
-  ShieldCheck,
-  Wrench,
-} from "lucide-react";
-import ServiceCard from "../ServiceCard";
-import Footer from "../components/Footer";
-import Projects from "../components/Projects";
+import { ArrowRight, BadgeCheck, Building2, Compass, ShieldCheck } from "lucide-react";
 import SEO from "../components/SEO";
-
-const services = [
-  {
-    icon: <Wrench size={28} className="text-white" />,
-    title: "ACMV & HVAC Systems",
-    tagColor: "#0f52ba",
-    description:
-      "Design and installation of ductwork, piping, VRF systems, chilled water systems, and cleanroom air handling.",
-  },
-  {
-    icon: <CircuitBoard size={28} className="text-white" />,
-    title: "M&E Works",
-    tagColor: "#0f766e",
-    description:
-      "Turnkey mechanical and electrical engineering, utilities installation, and infrastructure upgrades.",
-  },
-  {
-    icon: <ShieldCheck size={28} className="text-white" />,
-    title: "Cleanroom Construction",
-    tagColor: "#7c3aed",
-    description:
-      "Design, construction, and validation of Class 10k and 100k cleanrooms.",
-  },
-  {
-    icon: <Factory size={28} className="text-white" />,
-    title: "Preventive Maintenance",
-    tagColor: "#f97316",
-    description:
-      "Comprehensive maintenance for ACMV, chiller plants, and utilities systems.",
-  },
-  {
-    icon: <ClipboardList size={28} className="text-white" />,
-    title: "Consultancy & Project Management",
-    tagColor: "#db2777",
-    description:
-      "System assessments, retrofit consultations, and full project lifecycle management.",
-  },
-];
+import Footer from "../components/Footer";
 
 const aboutHighlights = [
   {
@@ -77,22 +28,19 @@ const leaders = [
     photo: "/Eric.png",
     name: "Eric Auiyong",
     title: "Managing Director",
-    summary:
-      "Project leadership with deep HVAC, M&E, and cleanroom experience.",
+    summary: "Project leadership with deep HVAC, M&E, and cleanroom experience.",
   },
   {
     photo: "/weiren.png",
     name: "Walter Wu Weiren",
     title: "Operations Director",
-    summary:
-      "Operational coordination and site execution across project phases.",
+    summary: "Operational coordination and site execution across project phases.",
   },
   {
     photo: "/Jeffrey.jpeg",
     name: "Pye Hein Thaw @ Jeffrey",
     title: "Service Manager",
-    summary:
-      "Service support, maintenance coordination, and responsive follow-through.",
+    summary: "Service support, maintenance coordination, and responsive follow-through.",
   },
 ];
 
@@ -109,7 +57,7 @@ const HomePage = () => {
       <section id="home" className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.12),transparent_24%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.14),transparent_24%)]" />
 
-        <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-14 lg:pt-12">
+        <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 lg:px-8 lg:pb-16 lg:pt-12">
           <div className="overflow-hidden rounded-[2.4rem] border border-slate-200/80 bg-slate-950 text-white shadow-[0_30px_100px_rgba(15,23,42,0.2)] dark:border-white/10">
             <div className="grid gap-8 p-5 sm:p-6 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:p-8 xl:p-10">
               <div className="flex flex-col justify-center">
@@ -126,19 +74,19 @@ const HomePage = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href="#services"
+                  <Link
+                    to="/services"
                     className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:-translate-y-0.5 hover:bg-sky-400"
                   >
                     Our services
                     <ArrowRight size={16} />
-                  </a>
-                  <a
-                    href="#contact"
+                  </Link>
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-5 py-3 text-sm font-semibold text-white/88 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/10"
                   >
                     Contact us
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -187,11 +135,7 @@ const HomePage = () => {
                         What we handle
                       </p>
                       <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                        {[
-                          "ACMV and HVAC",
-                          "Cleanroom and M&E",
-                          "Maintenance and project support",
-                        ].map((item) => (
+                        {["ACMV and HVAC", "Cleanroom and M&E", "Maintenance and project support"].map((item) => (
                           <div
                             key={item}
                             className="rounded-2xl border border-white/10 bg-black/10 px-4 py-3 text-sm text-white/80"
@@ -213,31 +157,6 @@ const HomePage = () => {
       </section>
 
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 pb-14 pt-2 sm:px-6 lg:px-8">
-        <section
-          id="services"
-          className="relative overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8"
-        >
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
-              Our service
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
-              Practical engineering services.
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-              The homepage only needs a quick read. Each service card points to the detail pages when clients need more.
-            </p>
-          </div>
-
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service, index) => (
-              <ServiceCard key={service.title} index={index} {...service} />
-            ))}
-          </div>
-        </section>
-
-        <Projects />
-
         <section
           id="leadership"
           className="rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8"
@@ -287,64 +206,6 @@ const HomePage = () => {
                 </div>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section
-          id="contact"
-          className="rounded-[2rem] border border-slate-200/80 bg-slate-950 px-5 py-6 text-white shadow-[0_18px_50px_rgba(15,23,42,0.12)] dark:border-white/10 sm:px-6 lg:px-8"
-        >
-          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
-                Contact us
-              </p>
-              <h2 className="mt-2 text-3xl font-semibold">
-                Need an HVAC or M&E team in Singapore?
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-white/75">
-                Call us for new projects, maintenance support, or engineering consultation. We will review the scope and follow up by phone.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="tel:+6583668738"
-                  className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:-translate-y-0.5 hover:bg-sky-400"
-                >
-                  Call +65 8366 8738
-                </a>
-                <a
-                  href="#home"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-5 py-3 text-sm font-semibold text-white/88 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/10"
-                >
-                  Back to top
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-[1.75rem] border border-white/10 bg-white/6 p-5 backdrop-blur">
-              <div className="grid gap-3 text-sm text-white/80 sm:grid-cols-3">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
-                    Typical response
-                  </p>
-                  <p className="mt-2 leading-7">
-                    Reviewed during business hours
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
-                    What to share
-                  </p>
-                  <p className="mt-2 leading-7">Scope, site location, and timeline</p>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
-                    Best for
-                  </p>
-                  <p className="mt-2 leading-7">New work, maintenance, and consultation</p>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
       </main>

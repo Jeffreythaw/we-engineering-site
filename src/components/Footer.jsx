@@ -5,9 +5,10 @@ import BrandLogo from "./BrandLogo";
 
 const quickLinks = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/#services" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Leadership", href: "/#leadership" },
+  { label: "About", href: "/#leadership" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const services = [

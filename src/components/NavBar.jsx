@@ -6,6 +6,7 @@ import {
   ArrowUpRight,
   Building2,
   ChevronDown,
+  Layers3,
   Menu,
   Moon,
   Sun,
@@ -72,19 +73,71 @@ const NavBar = ({ isDark, setIsDark }) => {
           <Link to="/" className={navLinkClass("/")}>
             Home
           </Link>
+          <Link to="/services" className={navLinkClass("/services")}>
+            Services
+          </Link>
+          <Link to="/projects" className={navLinkClass("/projects")}>
+            Projects
+          </Link>
+          <Link to="/#leadership" className={navLinkClass("/#leadership")}>
+            Leadership
+          </Link>
+          <Link to="/contact" className={navLinkClass("/contact")}>
+            Contact
+          </Link>
 
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen((open) => !open)}
               className="inline-flex items-center gap-1.5 text-sm font-medium text-white/85 transition-colors duration-200 hover:text-white"
             >
-              Services <ChevronDown size={16} />
+              More <ChevronDown size={16} />
             </button>
             <div
               className={`absolute left-0 top-full mt-3 w-80 origin-top-left rounded-2xl border border-slate-200/20 bg-white p-2 text-slate-900 shadow-2xl transition duration-200 dark:border-white/10 dark:bg-slate-900 dark:text-white ${
                 dropdownOpen ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0"
               }`}
             >
+              <Link
+                to="/services"
+                className={menuItemClass}
+                onClick={() => setDropdownOpen(false)}
+              >
+                <Building2 size={18} className="mt-0.5 shrink-0 text-sky-600" />
+                <span>
+                  <span className="block font-semibold">Services Overview</span>
+                  <span className="block text-sm text-slate-500 dark:text-slate-400">
+                    Our full service lineup
+                  </span>
+                </span>
+              </Link>
+              <Link
+                to="/projects"
+                className={menuItemClass}
+                onClick={() => setDropdownOpen(false)}
+              >
+                <Layers3 size={18} className="mt-0.5 shrink-0 text-sky-600" />
+                <span>
+                  <span className="block font-semibold">Sectors & Projects</span>
+                  <span className="block text-sm text-slate-500 dark:text-slate-400">
+                    Portfolio by sector
+                  </span>
+                </span>
+              </Link>
+              <Link
+                to="/contact"
+                className={menuItemClass}
+                onClick={() => setDropdownOpen(false)}
+              >
+                <ArrowUpRight size={18} className="mt-0.5 shrink-0 text-sky-600" />
+                <span>
+                  <span className="block font-semibold">Contact Us</span>
+                  <span className="block text-sm text-slate-500 dark:text-slate-400">
+                    Call or visit the office
+                  </span>
+                </span>
+              </Link>
+              <div className="my-2 border-t border-slate-200 dark:border-white/10" />
               <Link
                 to="/services/basic-knowledge"
                 className={menuItemClass}
@@ -140,16 +193,6 @@ const NavBar = ({ isDark, setIsDark }) => {
             </div>
           </div>
 
-          <a href="/#projects" className={navLinkClass("/#projects")}>
-            Projects
-          </a>
-          <a href="/#leadership" className={navLinkClass("/#leadership")}>
-            Leadership
-          </a>
-          <a href="/#contact" className={navLinkClass("/#contact")}>
-            Contact
-          </a>
-
           <button
             onClick={() => setIsDark(!isDark)}
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/12"
@@ -186,6 +229,34 @@ const NavBar = ({ isDark, setIsDark }) => {
             >
               Home
             </Link>
+            <Link
+              to="/services"
+              className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Services
+            </Link>
+            <Link
+              to="/projects"
+              className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Projects
+            </Link>
+            <Link
+              to="/#leadership"
+              className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Leadership
+            </Link>
+            <Link
+              to="/contact"
+              className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
 
             <div className="rounded-2xl border border-white/8 bg-white/5 p-2">
               <div className="px-3 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-white/50">
@@ -220,28 +291,6 @@ const NavBar = ({ isDark, setIsDark }) => {
                 Preventive Maintenance
               </Link>
             </div>
-
-            <a
-              href="/#projects"
-              className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Projects
-            </a>
-            <a
-              href="/#leadership"
-              className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Leadership
-            </a>
-            <a
-              href="/#contact"
-              className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
-            </a>
 
             <div className="flex items-center gap-3 pt-2">
               <button
