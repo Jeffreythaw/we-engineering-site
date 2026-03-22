@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Building2, Factory, Layers3, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Building2,
+  Factory,
+  Layers3,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import SEO from "../components/SEO";
 import Footer from "../components/Footer";
 
@@ -34,28 +43,230 @@ const highlights = [
   { label: "IME SP2", scope: "HVAC and system maintenance" },
 ];
 
-const tsxPhotos = [
-  "1.jpg",
-  "2.jpg",
-  "3.jpg",
-  "4.jpg",
-  "4.5.jpg",
-  "5.jpg",
-  "6.jpg",
-  "7.jpg",
-  "8.jpg",
-  "9.jpg",
-  "10.jpg",
-  "11.jpg",
-  "12.jpg",
-  "13.jpg",
-  "14.jpg",
-  "15.jpg",
-  "16.jpg",
-  "17.jpg",
-  "18.jpg",
-  "19.jpg",
+const projectCases = [
+  {
+    key: "tai-seng-exchange",
+    name: "TaiSeng Exchange",
+    address: "1 TaiSeng Avenue, Tower B, Level 3",
+    summary:
+      "Current site photo set from the TSX folder, presented as a simple animated viewer.",
+    tags: ["ACMV", "Site coordination", "Progress photos"],
+    photos: [
+      "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "4.5.jpg",
+      "5.jpg",
+      "6.jpg",
+      "7.jpg",
+      "8.jpg",
+      "9.jpg",
+      "10.jpg",
+      "11.jpg",
+      "12.jpg",
+      "13.jpg",
+      "14.jpg",
+      "15.jpg",
+      "16.jpg",
+      "17.jpg",
+      "18.jpg",
+      "19.jpg",
+    ].map((fileName, index) => ({
+      src: `/projects/TSX/${fileName}`,
+      label: `Photo ${String(index + 1).padStart(2, "0")}`,
+    })),
+  },
 ];
+
+const ProjectsViewer = () => {
+  const [activeProjectKey, setActiveProjectKey] = useState(projectCases[0].key);
+  const activeProject = useMemo(
+    () => projectCases.find((project) => project.key === activeProjectKey) ?? projectCases[0],
+    [activeProjectKey]
+  );
+  const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+
+  useEffect(() => {
+    setActivePhotoIndex(0);
+  }, [activeProject.key]);
+
+  useEffect(() => {
+    if (!activeProject.photos.length) return undefined;
+
+    const interval = window.setInterval(() => {
+      setActivePhotoIndex((current) => (current + 1) % activeProject.photos.length);
+    }, 4200);
+
+    return () => window.clearInterval(interval);
+  }, [activeProject.photos.length, activeProject.key]);
+
+  const activePhoto = activeProject.photos[activePhotoIndex];
+
+  return (
+    <section className="mt-8 rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+            Project photos
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
+            Animated project viewer.
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+            A single viewer keeps the page clean now, and scales better when more projects are added later.
+          </p>
+        </div>
+
+        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
+            Current project
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-white">
+            {activeProject.name}
+          </p>
+          <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">
+            {activeProject.address}
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        {projectCases.map((project) => (
+          <button
+            key={project.key}
+            type="button"
+            onClick={() => setActiveProjectKey(project.key)}
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+              activeProject.key === project.key
+                ? "border-sky-500 bg-sky-500 text-white shadow-lg shadow-sky-500/20"
+                : "border-slate-200 bg-white text-slate-600 hover:border-sky-300 hover:text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-sky-500 dark:hover:text-white"
+            }`}
+          >
+            {project.name}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/5">
+          <div className="relative aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-950 sm:aspect-[16/10]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activePhoto.src}
+                src={activePhoto.src}
+                alt={`${activeProject.name} ${activePhoto.label}`}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                initial={{ opacity: 0, scale: 1.03, x: 24 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 0.98, x: -24 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                loading="lazy"
+              />
+            </AnimatePresence>
+
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(2,6,23,0.52))]" />
+            <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-slate-950/70 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur">
+              {activePhoto.label}
+            </div>
+            <div className="absolute bottom-4 left-4 right-4 rounded-3xl border border-white/15 bg-slate-950/70 px-4 py-3 text-white backdrop-blur">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-300">
+                {activeProject.name}
+              </p>
+              <p className="mt-1 text-sm leading-6 text-white/85">
+                {activeProject.summary}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div className="rounded-[2rem] border border-slate-200 bg-slate-950 p-5 text-white dark:border-white/10">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">
+              Photo set
+            </p>
+            <p className="mt-3 text-sm leading-7 text-white/75">
+              Hover or tap through the sequence as more projects are added later.
+            </p>
+            <div className="mt-5 flex gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  setActivePhotoIndex((current) =>
+                    (current - 1 + activeProject.photos.length) % activeProject.photos.length
+                  )
+                }
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                <ArrowLeft size={16} />
+                Previous
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setActivePhotoIndex((current) => (current + 1) % activeProject.photos.length)
+                }
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-400"
+              >
+                Next
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-slate-900/70">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
+                Thumbnails
+              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                {String(activePhotoIndex + 1).padStart(2, "0")} /{" "}
+                {String(activeProject.photos.length).padStart(2, "0")}
+              </p>
+            </div>
+            <div className="mt-4 grid grid-cols-5 gap-2 sm:grid-cols-6 lg:grid-cols-5">
+              {activeProject.photos.slice(0, 10).map((photo, index) => (
+                <button
+                  key={photo.src}
+                  type="button"
+                  onClick={() => setActivePhotoIndex(index)}
+                  className={`overflow-hidden rounded-2xl border transition ${
+                    activePhotoIndex === index
+                      ? "border-sky-500 ring-2 ring-sky-500/20"
+                      : "border-slate-200 dark:border-white/10"
+                  }`}
+                >
+                  <img
+                    src={photo.src}
+                    alt={`${activeProject.name} thumbnail ${index + 1}`}
+                    className="block aspect-square w-full object-cover"
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-white/5">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
+              Tags
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {activeProject.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-600 dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const ProjectsPage = () => (
   <div className="w-full">
@@ -116,63 +327,7 @@ const ProjectsPage = () => (
         </div>
       </section>
 
-      <section className="mt-8 rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
-              Project photos
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
-              TaiSeng Exchange site photos.
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-              1 TaiSeng Avenue, Tower B, Level 3. A photo set from the current project folder shown as a clean gallery.
-            </p>
-          </div>
-
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
-              Project details
-            </p>
-            <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-white">
-              TaiSeng Exchange
-            </p>
-            <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">
-              1 TaiSeng Avenue, Tower B, Level 3
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {tsxPhotos.map((fileName, index) => (
-            <article
-              key={fileName}
-              className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-50 shadow-sm transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-white/5"
-            >
-              <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-950">
-                <img
-                  src={`/projects/TSX/${fileName}`}
-                  alt={`TaiSeng Exchange ${String(index + 1).padStart(2, "0")}`}
-                  className="block aspect-[3/4] w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(2,6,23,0.55))]" />
-                <div className="absolute bottom-3 left-3 rounded-full border border-white/15 bg-slate-950/70 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur">
-                  Photo {String(index + 1).padStart(2, "0")}
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-900 dark:text-white">
-                  TaiSeng Exchange
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                  Installation progress and site coordination.
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <ProjectsViewer />
 
       <section className="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="rounded-[2rem] border border-slate-200/80 bg-slate-950 px-5 py-6 text-white shadow-[0_18px_50px_rgba(15,23,42,0.12)] dark:border-white/10 sm:px-6 lg:px-8">
