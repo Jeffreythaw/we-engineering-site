@@ -56,8 +56,22 @@ const projectCases = [
     folder: "TSX",
     address: "1 TaiSeng Avenue, Tower B, Level 3",
     summary:
-      "Current site photo set from the TSX folder, presented as a simple animated viewer.",
-    tags: ["ACMV", "Site coordination", "Progress photos"],
+      "Office and cleanroom project covering full fit-out and site delivery across multiple trades.",
+    tags: ["Office", "Cleanroom", "MEP", "Fit-out"],
+    scopeBullets: [
+      "Electrical",
+      "Partition",
+      "Epoxy flooring",
+      "Painting",
+      "ACMV",
+      "Chilled water piping",
+      "AC equipment",
+      "Brick laying and plastering",
+      "Chilled water pipe hot tapping",
+      "Sprinkler pipe",
+      "Wet work",
+      "Door installation",
+    ],
     photos: makeProjectPhotos("TSX", [
       "1.jpg",
       "2.jpg",
@@ -87,8 +101,9 @@ const projectCases = [
     folder: "HBL #02-02",
     address: "61/63 Alexandra Terrace, Unit #02-02",
     summary:
-      "A second project case with its own animated photo set, ready for more folders later.",
-    tags: ["ACMV", "Fit-out", "Progress photos"],
+      "ACMV-only package focused on ducting, insulation, and VAV control.",
+    tags: ["ACMV", "Ducting", "Insulation", "VAV control"],
+    scopeBullets: ["Ducting", "Insulation", "VAV control"],
     photos: makeProjectPhotos("HBL #02-02", ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"]),
   },
 ];
@@ -175,6 +190,19 @@ const ProjectsViewer = () => {
           <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">
             {activeProject.address}
           </p>
+          <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+            {activeProject.summary}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {activeProject.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[0.7rem] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -334,15 +362,15 @@ const ProjectsViewer = () => {
 
           <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-white/5">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
-              Tags
+              Scope
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {activeProject.tags.map((tag) => (
+              {activeProject.scopeBullets.map((item) => (
                 <span
-                  key={tag}
+                  key={item}
                   className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-600 dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-300"
                 >
-                  {tag}
+                  {item}
                 </span>
               ))}
             </div>
