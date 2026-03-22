@@ -34,27 +34,27 @@ const highlights = [
   { label: "IME SP2", scope: "HVAC and system maintenance" },
 ];
 
-const projectPhotos = [
-  {
-    image: "/Work.png",
-    title: "Site installation",
-    caption: "Ducting, pipework, and support coordination during delivery.",
-  },
-  {
-    image: "/ACMV.png",
-    title: "ACMV work",
-    caption: "Mechanical services installed for controlled environments.",
-  },
-  {
-    image: "/Cleanroom.png",
-    title: "Cleanroom build",
-    caption: "Cleanroom-focused fit-out and execution detail.",
-  },
-  {
-    image: "/Maintenance.png",
-    title: "Maintenance support",
-    caption: "Ongoing servicing and follow-through after handover.",
-  },
+const tsxPhotos = [
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+  "4.jpg",
+  "4.5.jpg",
+  "5.jpg",
+  "6.jpg",
+  "7.jpg",
+  "8.jpg",
+  "9.jpg",
+  "10.jpg",
+  "11.jpg",
+  "12.jpg",
+  "13.jpg",
+  "14.jpg",
+  "15.jpg",
+  "16.jpg",
+  "17.jpg",
+  "18.jpg",
+  "19.jpg",
 ];
 
 const ProjectsPage = () => (
@@ -117,42 +117,56 @@ const ProjectsPage = () => (
       </section>
 
       <section className="mt-8 rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
-            Project photos
-          </p>
-          <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
-            Real site work, shown clearly.
-          </h2>
-          <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-            Add your own worksite photos here to show installation quality, safety, and project progress.
-          </p>
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+              Project photos
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
+              TaiSeng Exchange site photos.
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              1 TaiSeng Avenue, Tower B, Level 3. A photo set from the current project folder shown as a clean gallery.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-600 dark:text-sky-400">
+              Project details
+            </p>
+            <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-white">
+              TaiSeng Exchange
+            </p>
+            <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              1 TaiSeng Avenue, Tower B, Level 3
+            </p>
+          </div>
         </div>
 
-        <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {projectPhotos.map((item) => (
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          {tsxPhotos.map((fileName, index) => (
             <article
-              key={item.title}
+              key={fileName}
               className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-50 shadow-sm transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-white/5"
             >
               <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-950">
                 <img
-                  src={item.image}
-                  alt={item.title}
+                  src={`/projects/TSX/${fileName}`}
+                  alt={`TaiSeng Exchange ${String(index + 1).padStart(2, "0")}`}
                   className="block aspect-[3/4] w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(2,6,23,0.55))]" />
                 <div className="absolute bottom-3 left-3 rounded-full border border-white/15 bg-slate-950/70 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur">
-                  Project photo
+                  Photo {String(index + 1).padStart(2, "0")}
                 </div>
               </div>
               <div className="p-4">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-900 dark:text-white">
-                  {item.title}
+                  TaiSeng Exchange
                 </h3>
                 <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                  {item.caption}
+                  Installation progress and site coordination.
                 </p>
               </div>
             </article>
