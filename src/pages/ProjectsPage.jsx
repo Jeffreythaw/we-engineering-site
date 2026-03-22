@@ -1,9 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Building2, Factory, Layers3, ShieldCheck, Sparkles } from "lucide-react";
 import SEO from "../components/SEO";
 import Footer from "../components/Footer";
-import Projects from "../components/Projects";
+
+const sectors = [
+  {
+    icon: <Layers3 size={18} />,
+    title: "Semiconductor & Cleanroom",
+    summary: "Precision HVAC, cleanroom construction, and utility coordination.",
+  },
+  {
+    icon: <ShieldCheck size={18} />,
+    title: "Pharmaceutical & Life Sciences",
+    summary: "Lab fit-out, compliance-led M&E execution, and controlled environments.",
+  },
+  {
+    icon: <Factory size={18} />,
+    title: "Industrial & Manufacturing",
+    summary: "Reliable cooling, plant maintenance, and production support.",
+  },
+  {
+    icon: <Building2 size={18} />,
+    title: "Commercial & Retail",
+    summary: "Tenant fit-outs, M&E packages, and occupied-building coordination.",
+  },
+];
+
+const highlights = [
+  { label: "Sony Electronics Singapore", scope: "ACMV and piping for cleanroom areas" },
+  { label: "GSK Singapore", scope: "Lab fit-up and black utilities piping" },
+  { label: "Big Box Pte Ltd", scope: "M&E works and fire protection" },
+  { label: "IME SP2", scope: "HVAC and system maintenance" },
+];
 
 const ProjectsPage = () => (
   <div className="w-full">
@@ -24,17 +53,17 @@ const ProjectsPage = () => (
           <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <h1 className="text-4xl font-semibold text-slate-900 dark:text-white sm:text-5xl">
-                Selected work and sector coverage.
+                Work across regulated and occupied sites.
               </h1>
               <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                A compact overview of the environments we work in and the type of delivery we bring to each one.
+                A short view of the sectors we work in and the types of projects we are brought in to deliver.
               </p>
             </div>
             <Link
-              to="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:text-sky-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
             >
-              View services
+              Contact us
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -43,28 +72,85 @@ const ProjectsPage = () => (
     </section>
 
     <main className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
-      <Projects />
+      <section className="rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {sectors.map((sector) => (
+            <div
+              key={sector.title}
+              className="rounded-3xl border border-slate-200 bg-slate-50/80 p-5 dark:border-white/10 dark:bg-white/5"
+            >
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-300">
+                {sector.icon}
+              </div>
+              <h2 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">
+                {sector.title}
+              </h2>
+              <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                {sector.summary}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <section className="mt-8 rounded-[2rem] border border-slate-200/80 bg-slate-950 px-5 py-6 text-white shadow-[0_18px_50px_rgba(15,23,42,0.12)] dark:border-white/10 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
-              Delivery focus
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold">
-              Built for complex and occupied sites.
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-white/75">
-              Precision, safety, and accountability stay consistent from planning through closeout.
-            </p>
+      <section className="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="rounded-[2rem] border border-slate-200/80 bg-slate-950 px-5 py-6 text-white shadow-[0_18px_50px_rgba(15,23,42,0.12)] dark:border-white/10 sm:px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
+            Delivery focus
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold">
+            Built for feasibility, execution, and closeout.
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-white/75">
+            Precision, safety, and accountability stay consistent from planning through completion.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {["Cleanroom", "Pharma", "Industrial", "Commercial"].map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/80"
+              >
+                {item}
+              </span>
+            ))}
           </div>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
-          >
-            Contact us
-            <ArrowRight size={16} />
-          </Link>
+        </div>
+
+        <div className="rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+            Sample projects
+          </p>
+          <div className="mt-5 space-y-3">
+            {highlights.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5"
+              >
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                  {item.label}
+                </p>
+                <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                  {item.scope}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-3xl border border-slate-200 bg-slate-950 p-5 text-white dark:border-white/10">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">
+              Need a similar scope?
+            </p>
+            <p className="mt-3 text-sm leading-7 text-white/75">
+              Contact the team to discuss a new build, fit-out, or maintenance contract.
+            </p>
+            <Link
+              to="/contact"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
+            >
+              Contact us
+              <Sparkles size={16} />
+            </Link>
+          </div>
         </div>
       </section>
     </main>
