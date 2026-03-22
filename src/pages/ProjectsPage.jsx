@@ -86,22 +86,48 @@ const ProjectsViewer = () => {
     [activeProjectKey]
   );
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     setActivePhotoIndex(0);
+    setDirection(1);
   }, [activeProject.key]);
 
   useEffect(() => {
-    if (!activeProject.photos.length) return undefined;
+    if (!activeProject.photos.length || isPaused) return undefined;
 
     const interval = window.setInterval(() => {
+      setDirection(1);
       setActivePhotoIndex((current) => (current + 1) % activeProject.photos.length);
     }, 4200);
 
     return () => window.clearInterval(interval);
-  }, [activeProject.photos.length, activeProject.key]);
+  }, [activeProject.photos.length, activeProject.key, isPaused]);
+
+  const goToPhoto = (nextIndex) => {
+    setDirection(nextIndex > activePhotoIndex ? 1 : -1);
+    setActivePhotoIndex(nextIndex);
+  };
 
   const activePhoto = activeProject.photos[activePhotoIndex];
+  const slideVariants = {
+    enter: (slideDirection) => ({
+      opacity: 0,
+      x: slideDirection > 0 ? 56 : -56,
+      scale: 1.02,
+    }),
+    center: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+    },
+    exit: (slideDirection) => ({
+      opacity: 0,
+      x: slideDirection > 0 ? -48 : 48,
+      scale: 0.99,
+    }),
+  };
 
   return (
     <section className="mt-8 rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
@@ -131,7 +157,7 @@ const ProjectsViewer = () => {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-2">
+      <div className="mt-6 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
         {projectCases.map((project) => (
           <button
             key={project.key}
@@ -150,16 +176,22 @@ const ProjectsViewer = () => {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/5">
-          <div className="relative aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-950 sm:aspect-[16/10]">
-            <AnimatePresence mode="wait">
+          <div
+            className="relative aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-950 sm:aspect-[16/10]"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.img
                 key={activePhoto.src}
                 src={activePhoto.src}
                 alt={`${activeProject.name} ${activePhoto.label}`}
                 className="absolute inset-0 h-full w-full object-cover object-center"
-                initial={{ opacity: 0, scale: 1.03, x: 24 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.98, x: -24 }}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                custom={direction}
                 transition={{ duration: 0.45, ease: "easeOut" }}
                 loading="lazy"
               />
@@ -192,8 +224,8 @@ const ProjectsViewer = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setActivePhotoIndex((current) =>
-                    (current - 1 + activeProject.photos.length) % activeProject.photos.length
+                  goToPhoto(
+                    (activePhotoIndex - 1 + activeProject.photos.length) % activeProject.photos.length
                   )
                 }
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
@@ -204,7 +236,7 @@ const ProjectsViewer = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setActivePhotoIndex((current) => (current + 1) % activeProject.photos.length)
+                  goToPhoto((activePhotoIndex + 1) % activeProject.photos.length)
                 }
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-400"
               >
@@ -224,12 +256,12 @@ const ProjectsViewer = () => {
                 {String(activeProject.photos.length).padStart(2, "0")}
               </p>
             </div>
-            <div className="mt-4 grid grid-cols-5 gap-2 sm:grid-cols-6 lg:grid-cols-5">
-              {activeProject.photos.slice(0, 10).map((photo, index) => (
+            <div className="mt-4 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+              {activeProject.photos.map((photo, index) => (
                 <button
                   key={photo.src}
                   type="button"
-                  onClick={() => setActivePhotoIndex(index)}
+                  onClick={() => goToPhoto(index)}
                   className={`overflow-hidden rounded-2xl border transition ${
                     activePhotoIndex === index
                       ? "border-sky-500 ring-2 ring-sky-500/20"
@@ -239,7 +271,7 @@ const ProjectsViewer = () => {
                   <img
                     src={photo.src}
                     alt={`${activeProject.name} thumbnail ${index + 1}`}
-                    className="block aspect-square w-full object-cover"
+                    className="block h-20 w-16 shrink-0 object-cover sm:h-24 sm:w-20"
                     loading="lazy"
                   />
                 </button>
