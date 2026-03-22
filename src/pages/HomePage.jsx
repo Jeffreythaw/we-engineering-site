@@ -25,18 +25,18 @@ const aboutHighlights = [
 const mvvCards = [
   {
     label: "Mission",
-    title: "Practical support",
-    body: "Deliver work that stays usable on real sites, real schedules, and real handovers.",
+    title: "Site-ready execution",
+    body: "Deliver work that stays practical, coordinated, and usable from start to handover.",
   },
   {
     label: "Vision",
-    title: "Trusted delivery",
-    body: "Be the team clients call when quality, cleanliness, and coordination matter most.",
+    title: "A partner clients trust",
+    body: "Be the team clients call when quality, cleanliness, and coordination really matter.",
   },
   {
     label: "Values",
-    title: "Steady standards",
-    body: "Keep precision, accountability, and clear communication at the center of every stage.",
+    title: "Precision with accountability",
+    body: "Keep precision, ownership, and clear communication at the center of every stage.",
   },
 ];
 
@@ -139,10 +139,10 @@ const HomePage = () => {
               Mission, vision, values
             </p>
             <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
-              Three commitments that guide the work.
+              Three principles behind the way we work.
             </h2>
             <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-              Short, direct, and easy to scan.
+              Clear, direct, and built for real project conditions.
             </p>
           </div>
 
