@@ -53,17 +53,17 @@ const ProjectsPage = () => (
           <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <h1 className="text-4xl font-semibold text-slate-900 dark:text-white sm:text-5xl">
-                Work across regulated and occupied sites.
+                Selected work, by sector.
               </h1>
               <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                A short view of the sectors we work in and the types of projects we are brought in to deliver.
+                A short view of the sectors we work in and the kinds of projects we are brought in to deliver.
               </p>
             </div>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
             >
-              Contact us
+              Start a project
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -147,7 +147,7 @@ const ProjectsPage = () => (
               to="/contact"
               className="mt-4 inline-flex items-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
             >
-              Contact us
+              Start a project
               <Sparkles size={16} />
             </Link>
           </div>

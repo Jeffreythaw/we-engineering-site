@@ -20,7 +20,7 @@ const LeadershipPage = () => (
             Leadership
           </p>
           <h1 className="mt-3 text-4xl font-semibold text-slate-900 dark:text-white sm:text-5xl">
-            The team behind delivery.
+            Leadership with hands-on site discipline.
           </h1>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-300">
             Technical depth, operations discipline, and service follow-through shape how WE Engineering works on site.

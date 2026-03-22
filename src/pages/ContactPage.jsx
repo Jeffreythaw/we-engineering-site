@@ -36,10 +36,10 @@ const ContactPage = () => {
               Contact us
             </p>
             <h1 className="mt-3 text-4xl font-semibold text-slate-900 dark:text-white sm:text-5xl">
-              Quick contact, not a duplicate footer.
+              Quick contact for new work or support.
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-300">
-              This page is the short path to reach the team. The footer keeps the full office details and map.
+              Use this page to start the conversation. Full office details and the map stay in the footer.
             </p>
           </div>
         </div>

@@ -62,17 +62,17 @@ const ServicesPage = () => (
           <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <h1 className="text-4xl font-semibold text-slate-900 dark:text-white sm:text-5xl">
-                Practical engineering services.
+                Services for demanding sites.
               </h1>
               <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                The homepage stays short. This page holds the full service overview for clients who want detail.
+                A concise overview of the scopes WE Engineering delivers across industrial, commercial, and specialist facilities.
               </p>
             </div>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
             >
-              Contact us
+              Start a project
               <ArrowRight size={16} />
             </Link>
           </div>

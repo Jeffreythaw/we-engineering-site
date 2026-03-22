@@ -48,7 +48,7 @@ const HomePage = () => {
                   Engineering support for demanding sites.
                 </h1>
                 <p className="mt-5 max-w-2xl text-base leading-8 text-white/72 sm:text-lg">
-                  WE Engineering handles ACMV, HVAC, M&E, cleanroom, and maintenance scopes with practical execution, clear coordination, and steady follow-through.
+                  WE Engineering handles ACMV, HVAC, M&E, cleanroom, and maintenance scopes with practical execution and steady follow-through.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -113,9 +113,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-      <main className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 pb-14 pt-2 sm:px-6 lg:px-8">
-      </main>
 
       <Footer />
     </div>
