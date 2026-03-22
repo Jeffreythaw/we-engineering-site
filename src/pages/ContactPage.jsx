@@ -36,7 +36,7 @@ const ContactPage = () => {
               Contact us
             </p>
             <h1 className="mt-3 text-4xl font-semibold text-slate-900 dark:text-white sm:text-5xl">
-              Quick contact for new work or support.
+              Start the conversation.
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-300">
               Use this page to start the conversation. Full office details and the map stay in the footer.
@@ -52,10 +52,10 @@ const ContactPage = () => {
               Reach us
             </p>
             <h2 className="mt-3 text-3xl font-semibold">
-              Call for new work or maintenance support.
+              Call for new work, maintenance, or project support.
             </h2>
             <p className="mt-3 text-sm leading-7 text-white/75">
-              We review scopes for ACMV, HVAC, M&E, cleanroom, and project management work.
+              We review ACMV, HVAC, M&E, cleanroom, and project management scopes.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

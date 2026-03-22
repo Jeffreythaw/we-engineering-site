@@ -8,12 +8,12 @@ const aboutHighlights = [
   {
     icon: <Building2 size={18} />,
     title: "Singapore-based",
-    body: "Local support for industrial, commercial, and specialist facility work.",
+    body: "Local support for industrial, commercial, and specialist facilities.",
   },
   {
     icon: <Compass size={18} />,
     title: "Practical delivery",
-    body: "Clear coordination, clean handover, and disciplined site execution.",
+    body: "Clear coordination, disciplined execution, and clean handover.",
   },
   {
     icon: <ShieldCheck size={18} />,
@@ -63,10 +63,10 @@ const HomePage = () => {
                 </div>
 
                 <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.04] text-white sm:text-5xl lg:text-[4.1rem]">
-                  Engineering support for demanding sites.
+                  Engineering support for complex sites.
                 </h1>
                 <p className="mt-5 max-w-2xl text-base leading-8 text-white/72 sm:text-lg">
-                  WE Engineering handles ACMV, HVAC, M&E, cleanroom, and maintenance scopes with practical execution and steady follow-through.
+                  WE Engineering delivers ACMV, HVAC, M&E, cleanroom, and maintenance work with practical execution and steady follow-through.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -139,7 +139,7 @@ const HomePage = () => {
               Mission, vision, values
             </p>
             <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
-              Three principles behind the way we work.
+              Three principles that guide delivery.
             </h2>
             <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
               Clear, direct, and built for real project conditions.

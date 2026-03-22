@@ -65,7 +65,7 @@ const ServicesPage = () => (
                 Services for demanding sites.
               </h1>
               <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                A concise overview of the scopes WE Engineering delivers across industrial, commercial, and specialist facilities.
+                A concise view of the scopes WE Engineering delivers across industrial, commercial, and specialist facilities.
               </p>
             </div>
             <Link
