@@ -101,6 +101,13 @@ const highlights = [
 
 const mvvCards = [
   {
+    label: "Mission",
+    title: "Practical support",
+    body: "Practical support that holds up on real sites and schedules.",
+    accent: "from-amber-500 to-orange-500",
+    glow: "bg-amber-400/20",
+  },
+  {
     label: "Vision",
     title: "Trusted delivery",
     body: "Trusted delivery with quality, cleanliness, and coordination.",
@@ -113,13 +120,6 @@ const mvvCards = [
     body: "Precision, accountability, and clear communication.",
     accent: "from-sky-500 to-cyan-500",
     glow: "bg-sky-400/20",
-  },
-  {
-    label: "Mission",
-    title: "Practical support",
-    body: "Practical support that holds up on real sites and schedules.",
-    accent: "from-amber-500 to-orange-500",
-    glow: "bg-amber-400/20",
   },
 ];
 
