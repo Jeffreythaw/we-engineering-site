@@ -137,8 +137,8 @@ const ProjectsPage = () => (
           </div>
 
           <div className="mt-6 rounded-3xl border border-slate-200 bg-slate-950 p-5 text-white dark:border-white/10">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">
-              Need a similar scope?
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">
+              Need a similar project?
             </p>
             <p className="mt-3 text-sm leading-7 text-white/75">
               Contact the team to discuss a new build, fit-out, or maintenance contract.

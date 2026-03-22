@@ -64,10 +64,10 @@ const Footer = () => {
             </a>
             <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/55">
-                Project enquiry
+                Scope note
               </p>
               <p className="mt-2 text-sm leading-7 text-white/72">
-                Use this quick prompt when you call, or copy it and add your own scope details.
+                Copy this note when you call, then add your scope, site, and timeline.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <button
@@ -75,7 +75,7 @@ const Footer = () => {
                   onClick={handleCopyEnquiry}
                   className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/12"
                 >
-                  {copied ? "Copied" : "Copy enquiry note"}
+                  {copied ? "Copied scope note" : "Copy scope note"}
                 </button>
                 <a
                   href="tel:+6583668738"
@@ -178,7 +178,7 @@ const Footer = () => {
                   Visit us
                 </p>
                 <p className="mt-1 text-sm leading-6 text-white/85">
-                  Practical support from WCEGA Tower, Bukit Batok.
+                  Office access and project support from WCEGA Tower, Bukit Batok.
                 </p>
               </div>
 

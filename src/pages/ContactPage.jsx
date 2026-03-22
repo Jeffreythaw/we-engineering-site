@@ -72,7 +72,7 @@ const ContactPage = () => {
                 className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/12"
               >
                 <ClipboardList size={16} />
-                {copied ? "Copied enquiry note" : "Copy enquiry note"}
+                {copied ? "Copied scope note" : "Copy scope note"}
               </button>
             </div>
 
@@ -94,11 +94,11 @@ const ContactPage = () => {
 
           <div className="rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
-              What to prepare
+              What to share
             </p>
             <div className="mt-5 space-y-4">
               {[
-                "Brief project scope or problem statement",
+                "Brief scope or problem statement",
                 "Site address or building name",
                 "Target start date or maintenance window",
                 "Any photos, drawings, or existing constraints",
@@ -124,7 +124,7 @@ const ContactPage = () => {
                 href="#contact"
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
               >
-                View footer contact
+                View office details
                 <Phone size={16} />
               </a>
             </div>

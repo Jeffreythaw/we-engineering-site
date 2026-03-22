@@ -90,7 +90,7 @@ const NavBar = ({ isDark, setIsDark }) => {
               onClick={() => setDropdownOpen((open) => !open)}
               className="inline-flex items-center gap-1.5 text-sm font-medium text-white/85 transition-colors duration-200 hover:text-white"
             >
-              More <ChevronDown size={16} />
+              Guides <ChevronDown size={16} />
             </button>
             <div
               className={`absolute left-0 top-full mt-3 w-80 origin-top-left rounded-2xl border border-slate-200/20 bg-white p-2 text-slate-900 shadow-2xl transition duration-200 dark:border-white/10 dark:bg-slate-900 dark:text-white ${
@@ -107,7 +107,7 @@ const NavBar = ({ isDark, setIsDark }) => {
                 <span>
                   <span className="block font-semibold">Air Conditioning Basics</span>
                   <span className="block text-sm text-slate-500 dark:text-slate-400">
-                    Core HVAC knowledge and system types
+                    Core HVAC types and fundamentals
                   </span>
                 </span>
               </Link>
@@ -120,7 +120,7 @@ const NavBar = ({ isDark, setIsDark }) => {
                 <span>
                   <span className="block font-semibold">Heat Load Calculation</span>
                   <span className="block text-sm text-slate-500 dark:text-slate-400">
-                    Sizing and estimation workflow
+                    Sizing workflow and early estimates
                   </span>
                 </span>
               </Link>
@@ -133,7 +133,7 @@ const NavBar = ({ isDark, setIsDark }) => {
                 <span>
                   <span className="block font-semibold">Common Issues</span>
                   <span className="block text-sm text-slate-500 dark:text-slate-400">
-                    Troubleshooting for daily operations
+                    Practical troubleshooting notes
                   </span>
                 </span>
               </Link>
@@ -146,7 +146,7 @@ const NavBar = ({ isDark, setIsDark }) => {
                 <span>
                   <span className="block font-semibold">Preventive Maintenance</span>
                   <span className="block text-sm text-slate-500 dark:text-slate-400">
-                    Practical care routines and checklists
+                    Care routines and checklists
                   </span>
                 </span>
               </Link>
@@ -165,7 +165,7 @@ const NavBar = ({ isDark, setIsDark }) => {
             href="tel:+6583668738"
             className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
           >
-            Call Now
+            Call now
             <ArrowUpRight size={16} />
           </a>
         </div>
@@ -220,7 +220,7 @@ const NavBar = ({ isDark, setIsDark }) => {
 
             <div className="rounded-2xl border border-white/8 bg-white/5 p-2">
               <div className="px-3 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-white/50">
-                Services
+                Guides
               </div>
               <Link
                 to="/services/basic-knowledge"
@@ -268,7 +268,7 @@ const NavBar = ({ isDark, setIsDark }) => {
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Call Now
+                Call now
                 <ArrowUpRight size={16} />
               </a>
             </div>

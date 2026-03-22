@@ -74,20 +74,20 @@ const HomePage = () => {
                     to="/services"
                     className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:-translate-y-0.5 hover:bg-sky-400"
                   >
-                    Our services
+                    View services
                     <ArrowRight size={16} />
                   </Link>
                   <Link
                     to="/contact"
                     className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-5 py-3 text-sm font-semibold text-white/88 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/10"
                   >
-                    Contact us
+                    Contact
                   </Link>
                   <Link
                     to="/leadership"
                     className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-5 py-3 text-sm font-semibold text-white/88 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/10"
                   >
-                    Leadership
+                    View leadership
                   </Link>
                 </div>
 
@@ -139,7 +139,7 @@ const HomePage = () => {
               Mission, vision, values
             </p>
             <h2 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
-              Three principles that guide delivery.
+              Three principles that guide every project.
             </h2>
             <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
               Clear, direct, and built for real project conditions.
