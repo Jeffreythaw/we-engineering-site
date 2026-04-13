@@ -497,7 +497,7 @@ const ProjectsPage = () => (
 
         <div className="rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
-            Sample projects
+            Our past work
           </p>
           <div className="mt-5 space-y-3">
             {highlights.map((item) => (
