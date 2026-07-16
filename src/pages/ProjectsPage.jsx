@@ -54,7 +54,7 @@ const projectCases = [
     key: "tai-seng-exchange",
     name: "TaiSeng Exchange",
     folder: "TSX",
-    status: "Ongoing",
+    status: "Completed",
     address: "1 TaiSeng Avenue, Tower B, Level 3",
     summary:
       "Office and cleanroom project covering full fit-out and site delivery across multiple trades.",

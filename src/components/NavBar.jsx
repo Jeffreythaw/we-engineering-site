@@ -53,7 +53,6 @@ const NavBar = ({ isDark, setIsDark }) => {
 
   const menuItemClass =
     "flex items-start gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-100 dark:hover:bg-white/5";
-
   return (
     <nav className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/85 text-white shadow-[0_10px_30px_rgba(15,23,42,0.16)] backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -77,6 +76,9 @@ const NavBar = ({ isDark, setIsDark }) => {
           </Link>
           <Link to="/projects" className={navLinkClass("/projects")}>
             Projects
+          </Link>
+          <Link to="/activities" className={navLinkClass("/activities")}>
+            Activities
           </Link>
           <Link to="/leadership" className={navLinkClass("/leadership")}>
             Leadership
@@ -202,6 +204,13 @@ const NavBar = ({ isDark, setIsDark }) => {
               onClick={() => setMobileMenuOpen(false)}
             >
               Projects
+            </Link>
+            <Link
+              to="/activities"
+              className="block rounded-xl px-3 py-2 transition hover:bg-white/8"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Activities
             </Link>
             <Link
               to="/leadership"
