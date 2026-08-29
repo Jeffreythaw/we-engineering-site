@@ -6,6 +6,12 @@ import Footer from "../components/Footer";
 
 const activityVideos = [
   {
+    title: "Chiller Positioning Highlight",
+    project: "Woodlands Spectrum #01-18",
+    src: "/activities/woodlands-spectrum-01-18/chiller-positioning-highlight.mp4",
+    poster: "/activities/woodlands-spectrum-01-18/chiller-positioning-highlight.jpg",
+  },
+  {
     title: "Cooling Tower Overhaul Preparation",
     project: "HarbourLink Innohub",
     src: "/activities/harbour-link-innohub/cooling-tower-overhaul-01.mp4",

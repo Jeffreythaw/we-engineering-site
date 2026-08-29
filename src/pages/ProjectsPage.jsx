@@ -51,6 +51,40 @@ const makeProjectPhotos = (folder, files) =>
 
 const projectCases = [
   {
+    key: "woodlands-spectrum-01-18",
+    name: "Woodlands Spectrum #01-18",
+    folder: "woodlands-spectrum-01-18",
+    status: "Completed",
+    address: "Woodlands Spectrum #01-18",
+    summary:
+      "Chiller plant installation covering chilled-water piping, pumps, controls, insulation, testing, and commissioning.",
+    tags: ["Chiller Plant", "Chilled Water", "Controls", "Testing & Commissioning"],
+    scopeBullets: [
+      "Chiller installation",
+      "Chilled water piping",
+      "Pump installation",
+      "Pipe insulation and jacketing",
+      "Control panels and BMS",
+      "Testing and commissioning",
+    ],
+    photos: makeProjectPhotos("woodlands-spectrum-01-18", [
+      "13.jpg",
+      "14.jpg",
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg",
+      "07.jpg",
+      "08.jpg",
+      "09.jpg",
+      "10.jpg",
+      "11.jpg",
+      "12.jpg",
+    ]),
+  },
+  {
     key: "tai-seng-exchange",
     name: "TaiSeng Exchange",
     folder: "TSX",
