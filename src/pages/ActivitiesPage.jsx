@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 const activityVideos = [
   {
-    title: "Chiller Positioning Highlight",
+    title: "Smardt 200 RT Chiller Positioning",
     project: "Woodlands Spectrum #01-18",
     src: "/activities/woodlands-spectrum-01-18/chiller-positioning-highlight.mp4",
     poster: "/activities/woodlands-spectrum-01-18/chiller-positioning-highlight.jpg",
