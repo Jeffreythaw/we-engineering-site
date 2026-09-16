@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Building2, Compass, ShieldCheck } from "lucide-react";
+import { AirVent, ArrowRight, ArrowUpRight, Building2, Compass, PaintRoller, ShieldCheck, Zap } from "lucide-react";
 import SEO from "../components/SEO";
 import Footer from "../components/Footer";
 
@@ -38,6 +38,13 @@ const mvvCards = [
     title: "Precision with accountability",
     body: "Keep precision, ownership, and clear communication at the center of every stage.",
   },
+];
+
+// Verified against the BCA directory for UEN 202447757M on 16 September 2026.
+const bcaWorkheads = [
+  { code: "ME01", description: "Air-Conditioning, Refrigeration & Ventilation Works", icon: AirVent },
+  { code: "CR06", description: "Interior Decoration & Finishing Works", icon: PaintRoller },
+  { code: "ME05", description: "Electrical Engineering", icon: Zap },
 ];
 
 const HomePage = () => {
@@ -128,6 +135,55 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="bca-heading" className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+        <div className="rounded-[2rem] border border-slate-200/80 bg-white px-5 py-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-900/60 sm:px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
+            Our credentials
+          </p>
+          <h2 id="bca-heading" className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
+            BCA Registered Contractor
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+            Registered with Singapore’s Building and Construction Authority under the following workheads.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 border-y border-slate-200 py-4 text-sm dark:border-white/10">
+            <span className="font-semibold text-slate-900 dark:text-white">WE ENGINEERING PTE. LTD.</span>
+            <span className="text-slate-600 dark:text-slate-300">UEN 202447757M</span>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {bcaWorkheads.map(({ code, description, icon: Icon }) => (
+              <article key={code} className="flex flex-col rounded-3xl border border-slate-200 bg-slate-50/80 p-5 dark:border-white/10 dark:bg-white/5">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-100 text-sky-700 dark:bg-sky-500/10 dark:text-sky-300">
+                    <Icon size={20} aria-hidden="true" />
+                  </span>
+                  <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700 dark:bg-sky-500/10 dark:text-sky-300">Grade L1</span>
+                </div>
+                <p className="mt-5 text-sm font-semibold tracking-wider text-sky-700 dark:text-sky-300">{code}</p>
+                <h3 className="mb-5 mt-2 text-xl font-semibold text-slate-900 dark:text-white">{description}</h3>
+                <div className="mt-auto border-t border-slate-200 pt-4 text-sm dark:border-white/10">
+                  <p className="text-slate-600 dark:text-slate-300">Registration expiry</p>
+                  <time dateTime="2028-05-01" className="mt-1 block font-semibold text-slate-900 dark:text-white">1 May 2028</time>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-sm">
+            <p className="text-slate-600 dark:text-slate-300">Reference: BCA Directory</p>
+            <a
+              href="https://www.bca.gov.sg/eBACS/BCA_DIRECTORY/Company/CompanyDetails?uenNo=202447757M"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-2 rounded-md font-semibold text-sky-700 underline underline-offset-4 hover:text-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-500 dark:text-sky-300 dark:hover:text-sky-200"
+            >
+              View BCA registration
+              <ArrowUpRight size={16} aria-hidden="true" />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </div>
         </div>
       </section>
