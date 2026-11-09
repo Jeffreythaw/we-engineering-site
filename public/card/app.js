@@ -81,7 +81,7 @@ async function load(){
     $("whatsapp").hidden = false;
   }
 
-  $("saveBtn").href = `contact/${p.id}.vcf`;
+  $("saveBtn").href = `contact/${p.id}.vcf?v=2`;
   $("qrThumbImg").src = `qr/${p.id}.png`;
 
   function showQr(mode){
@@ -89,7 +89,7 @@ async function load(){
     document.querySelectorAll(".qr-img").forEach(img => {
       img.src = isVcf ? `qr/${p.id}.png` : `qr_url/${p.id}.png`;
     });
-    $("qrSub").textContent = isVcf ? "Scan to save contact (works offline)" : "Scan to open this card";
+    $("qrSub").textContent = isVcf ? "Scan to save contact (offline, no photo)" : "Scan to open this card";
     document.querySelectorAll(".tab[data-mode]").forEach(tab => {
       tab.classList.toggle("active", tab.dataset.mode === mode);
     });
