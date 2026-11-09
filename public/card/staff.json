@@ -1,0 +1,15 @@
+[
+  {
+    "id": "jeffrey",
+    "name": "PYE HEIN THAW @ JEFFREY",
+    "title": "Manager",
+    "company": "WE ENGINEERING PTE. LTD.",
+    "uen": "202447757M",
+    "phone": "+65 9335 6828",
+    "whatsapp": true,
+    "email": "jeffrey@we-engineering.net",
+    "address": "WCEGA Tower, 21 Bukit Batok Crescent, #29-81, Singapore 658065",
+    "website": "https://www.we-engineering.net",
+    "photo": "assets/photos/jeffrey.jpg"
+  }
+]
