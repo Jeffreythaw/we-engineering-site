@@ -11,5 +11,31 @@
     "address": "WCEGA Tower, 21 Bukit Batok Crescent, #29-81, Singapore 658065",
     "website": "https://www.we-engineering.net",
     "photo": "assets/photos/jeffrey.jpg"
+  },
+  {
+    "id": "eric",
+    "name": "ERIC AUIYONG",
+    "title": "Managing Director",
+    "company": "WE ENGINEERING PTE. LTD.",
+    "uen": "202447757M",
+    "phone": "+65 9238 3467",
+    "whatsapp": false,
+    "email": "eric@we-engineering.net",
+    "address": "WCEGA Tower, 21 Bukit Batok Crescent, #29-81, Singapore 658065",
+    "website": "https://www.we-engineering.net",
+    "photo": "assets/photos/eric.png"
+  },
+  {
+    "id": "walter",
+    "name": "WALTER WU",
+    "title": "Director",
+    "company": "WE ENGINEERING PTE. LTD.",
+    "uen": "202447757M",
+    "phone": "+65 8366 8738",
+    "whatsapp": false,
+    "email": "Walter@we-engineering.net",
+    "address": "WCEGA Tower, 21 Bukit Batok Crescent, #29-81, Singapore 658065",
+    "website": "https://www.we-engineering.net",
+    "photo": "assets/photos/walter.png"
   }
 ]
